@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>时间、时间戳、带格式时间的转换 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="时间、时间戳、带格式时间的转换最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳 获取时间   let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时间、时间戳、带格式时间的转换">
+<meta property="og:url" content="https://itlinnnn.github.io/linhui.github.io/2018/04/07/时间、时间戳、带格式时间的转换/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="时间、时间戳、带格式时间的转换最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳 获取时间   let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-07T02:40:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="时间、时间戳、带格式时间的转换">
+<meta name="twitter:description" content="时间、时间戳、带格式时间的转换最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳 获取时间   let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，">
+  
+    <link rel="alternate" href="/linhui.github.io/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/linhui.github.io/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/linhui.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/linhui.github.io/">Home</a>
+        
+          <a class="main-nav-link" href="/linhui.github.io/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/linhui.github.io/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://itlinnnn.github.io/linhui.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-时间、时间戳、带格式时间的转换" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/linhui.github.io/2018/04/07/时间、时间戳、带格式时间的转换/" class="article-date">
+  <time datetime="2018-04-07T02:40:16.000Z" itemprop="datePublished">2018-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      时间、时间戳、带格式时间的转换
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="时间、时间戳、带格式时间的转换"><a href="#时间、时间戳、带格式时间的转换" class="headerlink" title="时间、时间戳、带格式时间的转换"></a>时间、时间戳、带格式时间的转换</h2><h4 id="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的"><a href="#最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的" class="headerlink" title="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的"></a>最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的</h4><ol>
+<li>时间转换成时间戳<blockquote>
+<p>获取时间</p>
+</blockquote>
+<pre><code>
+let date = new Date();
+console.log(date);
+//输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)
+</code></pre></li>
+</ol>
+<ul>
+<li>转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000）<br><pre><code><br>let date1 = Date.parse(date);//毫秒级别的数值被转化为000<br>console.log(date1);<br>//输出:1521886920000</code></pre></li>
+</ul>
+<p>let date2 = date.valueOf();//通过valueOf()函数返回指定对象的原始值获得准确的时间戳值<br>console.log(date2);<br>//输出:1521886920000</p>
+<p>let date3 = date.getTime();//通过原型方法直接获得当前时间的毫秒值，准确<br>console.log(date3);<br>//输出:1521886920000</p>
+<p>let date4 = Number(date);//将时间转化为一个number类型的数值，即时间戳<br>console.log(date4);<br>//输出:1521886920000<br><br>2.时间转换为带格式的时间</p>
+<blockquote>
+<p>格式：yyyy-mm-dd</p>
+</blockquote>
+<pre><code>
+function formatDate(date) {
+   var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? '0' + m : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    return y + '-' + m + '-' + d;//这里可以写格式
+    //输出：2018-03-24
+}
+</code></pre>
+> 格式：yyyy-mm-dd hh:mm:ss
+
+<pre><code>
+function formatDateTime(date) {
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? ('0' + m) : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    var h = date.getHours();
+    h=h < 10 ? ('0' + h) : h;
+    var minute = date.getMinutes();
+    minute = minute < 10 ? ('0' + minute) : minute;
+    var second=date.getSeconds();
+    second=second < 10 ? ('0' + second) : second;
+    return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+};
+    //输出：2018-03-24 18:41:16
+</code></pre>
+3.时间戳转换为带格式的时间
+
+<pre><code>
+let date5 = new Date(date);//直接用 new Date(时间戳) 格式转化获得时间
+console.log(date5);
+formatDate(date5);//直接调用上方的方法
+</code></pre>
+4.时间格式字符串转为时间戳（毫秒）
+<pre><code>
+let time1='2018-03-24 18:55:16';
+let dateM=new Date(time1.replace(/-/g, '/'));  //开始时间
+let time2=dateM.getTime();
+console.log(time2);
+//输出：1521888916000
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://itlinnnn.github.io/linhui.github.io/2018/04/07/时间、时间戳、带格式时间的转换/" data-id="cjfory0bi00036sxeiws6ljnf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/linhui.github.io/2018/04/07/Vue的组件的概念与基本使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Vue的组件的概念与基本使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/linhui.github.io/2018/04/07/运用node实现简单爬虫/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">运用node实现简单爬虫</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/linhui.github.io/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/linhui.github.io/2018/04/07/Vue的组件的概念与基本使用/">Vue的组件的概念与基本使用</a>
+          </li>
+        
+          <li>
+            <a href="/linhui.github.io/2018/04/07/时间、时间戳、带格式时间的转换/">时间、时间戳、带格式时间的转换</a>
+          </li>
+        
+          <li>
+            <a href="/linhui.github.io/2018/04/07/运用node实现简单爬虫/">运用node实现简单爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/linhui.github.io/2018/04/07/test1/">test1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/linhui.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/linhui.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/linhui.github.io/fancybox/jquery.fancybox.css">
+  <script src="/linhui.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/linhui.github.io/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

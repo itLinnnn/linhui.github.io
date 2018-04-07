@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Vue的组件的概念与基本使用 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是vue的组件（what）? &amp;nbsp;&amp;nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。 如何使用组件（how）?  前提条件: 使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue的组件的概念与基本使用">
+<meta property="og:url" content="https://itlinnnn.github.io/linhui.github.io/2018/04/07/Vue的组件的概念与基本使用/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="什么是vue的组件（what）? &amp;nbsp;&amp;nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。 如何使用组件（how）?  前提条件: 使用">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-07T02:42:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue的组件的概念与基本使用">
+<meta name="twitter:description" content="什么是vue的组件（what）? &amp;nbsp;&amp;nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。 如何使用组件（how）?  前提条件: 使用">
+  
+    <link rel="alternate" href="/linhui.github.io/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/linhui.github.io/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/linhui.github.io/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/linhui.github.io/">Home</a>
+        
+          <a class="main-nav-link" href="/linhui.github.io/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/linhui.github.io/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://itlinnnn.github.io/linhui.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Vue的组件的概念与基本使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/linhui.github.io/2018/04/07/Vue的组件的概念与基本使用/" class="article-date">
+  <time datetime="2018-04-07T02:41:25.000Z" itemprop="datePublished">2018-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue的组件的概念与基本使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是vue的组件（what）"><a href="#什么是vue的组件（what）" class="headerlink" title="什么是vue的组件（what）?"></a>什么是vue的组件（what）?</h3><hr>
+<p>&nbsp;&nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。<br>一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。</p>
+<h3 id="如何使用组件（how）"><a href="#如何使用组件（how）" class="headerlink" title="如何使用组件（how）?"></a>如何使用组件（how）?</h3><hr>
+<ul>
+<li>前提条件: 使用组件名的时候是需要先实例化Vue的，因为组件现在是扩展在Vue中，想使用Vue中的组件就需要先实例化获得这个组件才能够使用</li>
+</ul>
+<ol>
+<li>创建组件<blockquote>
+<p>创建组件即在Vue构造函数中通过extend()方法添加该组件（ps：可以理解成在刚开学的时候，老师不认识你，但是知道有泡泡这个人）</p>
+</blockquote>
+</li>
+<li>注册组件<blockquote>
+<p>注册组件即在Vue构造函数中通过一个属性名与之关联在一起，有点像var name=’paopao’;这个时候 temp就是泡泡了（ps：这个时候老师把花名册上的’泡泡’和人对应起来了）<br>组件的注册可分为全局注册与局部注册，区别：注册的地方不一致；全局注册就是只要是实例化Vue的范围都可以使用该组件，局部注册就是只能在某一个Vue实例的范围内使用该组件</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>全局注册（使用 Vue.component(tagName, options)）<pre><code>
+//使用组件
+< div id="app">
+   < my-component>< /my-component>
+< /div>
+//确保在初始化根实例之前注册组件
+Vue.component('my-component', {
+template: '< div> component test! < /div>'
+})
+// 创建根实例
+new Vue({
+el: '#app',
+components: { App },
+template: '<app>'
+})
+</app></code></pre>
+
+</li>
+</ul>
+<p>最终渲染为：</p>
+<pre><code>
+< div id="app">
+  < div>component test!< /div>
+< /div>
+</code></pre>
+* 局部注册
+> 每个组件都注册到全局的方式显然很不合理，更多的时候采用的往往是局部注册的方式。可以通过某个 Vue 实例/组件的实例选项 components 注册仅在其作用域中可用的组件
+
+<pre><code>
+var Child = {
+  template: '< div>一个局部注册的组件!< /div>'
+}
+new Vue({
+  components: {
+  // < localRegistration>  只在父组件模板中才可用
+    'localRegistration': Child
+  }
+})
+</code></pre>
+
+<ol start="3">
+<li>使用组件<blockquote>
+<p>这个时候就可以在dom中添加所创建的组件名（这个时候你终于可以以’泡泡’的名义去做点什么事了，比如上课，去图书馆等）</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="Dom模版解析事项"><a href="#Dom模版解析事项" class="headerlink" title="Dom模版解析事项"></a>Dom模版解析事项</h3><hr>
+<p>&nbsp;&nbsp; 当使用 DOM 作为模板时 (例如，使用 el 选项来把 Vue 实例挂载到一个已有内容的元素上)，会受到 HTML 本身的一些限制，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。要特别注意的是，像 &lt; ul&gt;、&lt; ol&gt;、&lt; table&gt;、&lt; select&gt; 这样的元素里允许包含的元素有限制，而另一些像 &lt; option&gt; 这样的元素只能出现在某些特定元素的内部。</p>
+<p>例如(&lt; my-row&gt;为自定义的组件)：</p>
+<pre><code>
+< table>
+  < my-row>< /my-row>
+< /table>
+</code></pre>
+> 此时的自定义组件 < my-row> 被当作无效的内容，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。而此时的table标签还没有被解析，所以在往里面放入自定义组件的时候会导致错误的渲染结果。此时的解决方法是可以使用特殊的 is 特性：
+
+<pre><code>
+< table>
+  < tr is="my-row">
+< /table>
+</code></pre>
+
+<blockquote>
+<p>!!! 如果使用来自以下来源之一的字符串模板，则没有此限制:</p>
+<ul>
+<li>&lt; script type=”text/x-template”&gt;</li>
+<li>JavaScript 内联模板字符串 (通过内联的方式使其一同进行加载)</li>
+<li>.vue 组件</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>例如：</p>
+</blockquote>
+<pre><code>
+ new Vue({
+   el: '#app',
+   components:{
+     'selectcomp':{
+       template: ' < select> < optioncomp>< /optioncomp>< /select>'
+      }
+    }
+  })
+</code></pre>
+
+<h3 id="Vue-实例时传入的选项中data-必须是函数"><a href="#Vue-实例时传入的选项中data-必须是函数" class="headerlink" title="Vue 实例时传入的选项中data 必须是函数"></a>Vue 实例时传入的选项中data 必须是函数</h3><hr>
+<blockquote>
+<p>如果这样的写法：</p>
+</blockquote>
+<pre><code>
+ data: {
+   msg: 'Welcome to Your Vue.js App'
+ }
+</code></pre>
+> 将会报错：
+<pre><code>
+//Vue 会停止运行，并在控制台发出警告，告诉你在组件实例中 data 必须是一个函数。
+ [HMR] Waiting for update signal from WDS...
+vue.esm.js?efeb:591 [Vue warn]: The "data" option should be a function that 
+returns a per-instance value in component definitions.
+</code></pre>
+>举个例子来对比一下：
+<pre><code>
+< div id="example">
+  < simple-counter>< /simple-counter>
+  < simple-counter>< /simple-counter>
+  < simple-counter>< /simple-counter>
+
+</code></pre>
+
+<pre><code>
+var data = { counter: 0 }
+
+Vue.component('simple-counter', {
+  template: '< button v-on:click="counter += 1">{{ counter }}< /button>',
+  // data 的确是一个函数了，因此 Vue 不会警告，
+  // 但是我们却给每个组件实例返回了同一个对象的引用(此处是为了做对比)
+  data: function () {
+    return data
+  }
+})
+
+new Vue({
+  el: '#example'
+})
+</code></pre>
+> 现在的结果是有三个可以计数的按钮，但是不论点击的是哪一个，所有的按钮的所记数都会加1，因为每个组件实例返回的是同一个对象的引用，不论哪个按钮的对数据进行操作，都会影响到其他的按钮组件计数结果
+
+<pre><code>
+//将其data的格式写成如下，此时每个 counter 都有自己内部的状态了，都是独立存在的，
+每个组件返回的都是全新的数据对象：
+data: function () {
+  return {
+    counter: 0
+  }
+}
+</code></pre>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://itlinnnn.github.io/linhui.github.io/2018/04/07/Vue的组件的概念与基本使用/" data-id="cjfory0b500006sxed8fzin9l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/linhui.github.io/2018/04/07/时间、时间戳、带格式时间的转换/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">时间、时间戳、带格式时间的转换</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/linhui.github.io/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/linhui.github.io/2018/04/07/Vue的组件的概念与基本使用/">Vue的组件的概念与基本使用</a>
+          </li>
+        
+          <li>
+            <a href="/linhui.github.io/2018/04/07/时间、时间戳、带格式时间的转换/">时间、时间戳、带格式时间的转换</a>
+          </li>
+        
+          <li>
+            <a href="/linhui.github.io/2018/04/07/运用node实现简单爬虫/">运用node实现简单爬虫</a>
+          </li>
+        
+          <li>
+            <a href="/linhui.github.io/2018/04/07/test1/">test1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/linhui.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/linhui.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/linhui.github.io/fancybox/jquery.fancybox.css">
+  <script src="/linhui.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/linhui.github.io/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
