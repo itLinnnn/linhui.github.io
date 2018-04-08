@@ -503,27 +503,14 @@ console.log(date);
 </code></pre></li>
 </ol>
 <ul>
-<li>转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000）<br><pre><code><br>let date1 = Date.parse(date);//毫秒级别的数值被转化为000<br>console.log(date1);<br>//输出:1521886920000</code></pre></li>
-</ul>
-<p>let date2 = date.valueOf();//通过valueOf()函数返回指定对象的原始值获得准确的时间戳值<br>console.log(date2);<br>//输出:1521886920000</p>
-<p>let date3 = date.getTime();//通过原型方法直接获得当前时间的毫秒值，准确<br>console.log(date3);<br>//输出:1521886920000</p>
-<p>let date4 = Number(date);//将时间转化为一个number类型的数值，即时间戳<br>console.log(date4);<br>//输出:1521886920000<br><br>2.时间转换为带格式的时间</p>
-<blockquote>
+<li>转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000）<br><pre><code><br>let date1 = Date.parse(date);//毫秒级别的数值被转化为000<br>console.log(date1);<br>//输出:1521886920000<br>let date2 = date.valueOf();//通过valueOf()函数返回指定对象的原始值获得准确的时间戳值<br>console.log(date2);<br>//输出:1521886920000<br>let date3 = date.getTime();//通过原型方法直接获得当前时间的毫秒值，准确<br>console.log(date3);<br>//输出:1521886920000<br>let date4 = Number(date);//将时间转化为一个number类型的数值，即时间戳<br>console.log(date4);<br>//输出:1521886920000<br></code></pre><br>2.时间转换为带格式的时间<blockquote>
 <p>格式：yyyy-mm-dd</p>
 </blockquote>
-<pre><code>
-function formatDate(date) {
-   var y = date.getFullYear();
-    var m = date.getMonth() + 1;
-    m = m < 10 ? '0' + m : m;
-    var d = date.getDate();
-    d = d < 10 ? ('0' + d) : d;
-    return y + '-' + m + '-' + d;//这里可以写格式
-    //输出：2018-03-24
-}
-</code></pre>
-> 格式：yyyy-mm-dd hh:mm:ss
-
+<pre><code><br>function formatDate(date) {<br> var y = date.getFullYear();<br>  var m = date.getMonth() + 1;<br>  m = m &lt; 10 ? ‘0’ + m : m;<br>  var d = date.getDate();<br>  d = d &lt; 10 ? (‘0’ + d) : d;<br>  return y + ‘-‘ + m + ‘-‘ + d;//这里可以写格式<br>  //输出：2018-03-24<br>}<br></code></pre><blockquote>
+<p>格式：yyyy-mm-dd hh:mm:ss</p>
+</blockquote>
+</li>
+</ul>
 <pre><code>
 function formatDateTime(date) {
     var y = date.getFullYear();
