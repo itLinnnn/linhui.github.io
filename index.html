@@ -317,25 +317,9 @@ var child = {
 </li>
 </ol>
 <ul>
-<li>全局注册（使用 Vue.component(tagName, options)）<pre><code>
-//使用组件
-< div id="app">
-   < my-component>< /my-component>
-< /div>
-//确保在初始化根实例之前注册组件
-Vue.component('my-component', {
-template: '< div> component test! < /div>'
-})
-// 创建根实例
-new Vue({
-el: '#app',
-components: { App },
-template: '< App/>'
-})
-</code></pre>
-
-</li>
+<li>全局注册（使用 Vue.component(tagName, options)）<br><pre><code></code></pre></li>
 </ul>
+<p>//使用组件<br>  &lt; div id=”app”&gt;<br>     &lt; my-component&gt;&lt; /my-component&gt;<br>  &lt; /div&gt;<br>//确保在初始化根实例之前注册组件<br>Vue.component(‘my-component’, {<br>  template: ‘&lt; div&gt; component test! &lt; /div&gt;’<br>})<br>// 创建根实例<br>new Vue({<br>  el: ‘#app’,<br>  components: { App },<br>  template: ‘&lt; App/&gt;’<br>})<br></p>
 <p>最终渲染为：</p>
 <pre><code>
 < div id="app">
