@@ -7,17 +7,17 @@
   
   <title>时间、时间戳、带格式时间的转换 | 林晖的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="时间、时间戳、带格式时间的转换最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳 获取时间   let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，">
+  <meta name="description" content="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳获取时间 let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000）let">
 <meta property="og:type" content="article">
 <meta property="og:title" content="时间、时间戳、带格式时间的转换">
 <meta property="og:url" content="https://itlinnnn.github.io/linhui.github.io/2018/04/07/时间、时间戳、带格式时间的转换/index.html">
 <meta property="og:site_name" content="林晖的个人博客">
-<meta property="og:description" content="时间、时间戳、带格式时间的转换最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳 获取时间   let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，">
+<meta property="og:description" content="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳获取时间 let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000）let">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-08T02:04:01.000Z">
+<meta property="og:updated_time" content="2018-04-08T03:32:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="时间、时间戳、带格式时间的转换">
-<meta name="twitter:description" content="时间、时间戳、带格式时间的转换最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳 获取时间   let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，">
+<meta name="twitter:description" content="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳获取时间 let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000）let">
   
     <link rel="alternate" href="/linhui.github.io/atom.xml" title="林晖的个人博客" type="application/atom+xml">
   
@@ -86,11 +86,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="时间、时间戳、带格式时间的转换"><a href="#时间、时间戳、带格式时间的转换" class="headerlink" title="时间、时间戳、带格式时间的转换"></a>时间、时间戳、带格式时间的转换</h2><h4 id="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的"><a href="#最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的" class="headerlink" title="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的"></a>最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的</h4><ol>
-<li>时间转换成时间戳<blockquote>
-<p>获取时间</p>
-</blockquote>
-<pre><code>
+        <h4 id="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的"><a href="#最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的" class="headerlink" title="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的"></a>最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的</h4><ol>
+<li>时间转换成时间戳<br>获取时间<pre><code>
 let date = new Date();
 console.log(date);
 //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)
