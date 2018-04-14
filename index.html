@@ -642,34 +642,46 @@ var child = {
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="什么是vue的组件（what）"><a href="#什么是vue的组件（what）" class="headerlink" title="什么是vue的组件（what）?"></a>什么是vue的组件（what）?</h3><hr>
-<p>&nbsp;&nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。<br>一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。</p>
+<p>&nbsp;&nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。<br> 一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。</p>
 <h3 id="如何使用组件（how）"><a href="#如何使用组件（how）" class="headerlink" title="如何使用组件（how）?"></a>如何使用组件（how）?</h3><hr>
 <ul>
 <li>前提条件: 使用组件名的时候是需要先实例化Vue的，因为组件现在是扩展在Vue中，想使用Vue中的组件就需要先实例化获得这个组件才能够使用</li>
 </ul>
 <ol>
-<li>创建组件<blockquote>
-<p>创建组件即在Vue构造函数中通过extend()方法添加该组件（ps：可以理解成在刚开学的时候，老师不认识你，但是知道有泡泡这个人）</p>
-</blockquote>
-</li>
-<li>注册组件<blockquote>
-<p>注册组件即在Vue构造函数中通过一个属性名与之关联在一起，有点像var name=’paopao’;这个时候 temp就是泡泡了（ps：这个时候老师把花名册上的’泡泡’和人对应起来了）<br>组件的注册可分为全局注册与局部注册，区别：注册的地方不一致；全局注册就是只要是实例化Vue的范围都可以使用该组件，局部注册就是只能在某一个Vue实例的范围内使用该组件</p>
-</blockquote>
-</li>
+<li>创建组件<br>创建组件即在Vue构造函数中通过extend()方法添加该组件（ps：可以理解成在刚开学的时候，老师不认识你，但是知道有泡泡这个人）</li>
+<li>注册组件<br>注册组件即在Vue构造函数中通过一个属性名与之关联在一起，有点像var name=’paopao’;这个时候 temp就是泡泡了（ps：这个时候老师把花名册上的’泡泡’和人对应起来了）<br>组件的注册可分为全局注册与局部注册，区别：注册的地方不一致；全局注册就是只要是实例化Vue的范围都可以使用该组件，局部注册就是只能在某一个Vue实例的范围内使用该组件</li>
 </ol>
 <ul>
-<li>全局注册（使用 Vue.component(tagName, options)）<br><pre><code></code></pre></li>
+<li>全局注册（使用 Vue.component(tagName, options)）</li>
 </ul>
-<p>//使用组件<br>  &lt; div id=”app”&gt;<br>     &lt; my-component&gt;&lt; /my-component&gt;<br>  &lt; /div&gt;<br>//确保在初始化根实例之前注册组件<br>Vue.component(‘my-component’, {<br>  template: ‘&lt; div&gt; component test! &lt; /div&gt;’<br>})<br>// 创建根实例<br>new Vue({<br>  el: ‘#app’,<br>  components: { App },<br>  template: ‘&lt; App/&gt;’<br>})<br></p>
+<pre><code>
+//使用组件
+  < div id="app">
+     < my-component>< /my-component>
+  < /div>
+//确保在初始化根实例之前注册组件
+Vue.component('my-component', {
+  template: '< div> component test! < /div>'
+})
+// 创建根实例
+new Vue({
+  el: '#app',
+  components: { App },
+  template: '< App/>'
+})
+</code></pre>
+
 <p>最终渲染为：</p>
 <pre><code>
 < div id="app">
   < div>component test!< /div>
 < /div>
 </code></pre>
-* 局部注册
-> 每个组件都注册到全局的方式显然很不合理，更多的时候采用的往往是局部注册的方式。可以通过某个 Vue 实例/组件的实例选项 components 注册仅在其作用域中可用的组件
 
+<ul>
+<li>局部注册</li>
+</ul>
+<p>每个组件都注册到全局的方式显然很不合理，更多的时候采用的往往是局部注册的方式。可以通过某个 Vue 实例/组件的实例选项 components 注册仅在其作用域中可用的组件</p>
 <pre><code>
 var Child = {
   template: '< div>一个局部注册的组件!< /div>'
@@ -683,11 +695,9 @@ new Vue({
 </code></pre>
 
 <ol start="3">
-<li>使用组件<blockquote>
-<p>这个时候就可以在dom中添加所创建的组件名（这个时候你终于可以以’泡泡’的名义去做点什么事了，比如上课，去图书馆等）</p>
-</blockquote>
-</li>
+<li>使用组件</li>
 </ol>
+<p>这个时候就可以在dom中添加所创建的组件名（这个时候你终于可以以’泡泡’的名义去做点什么事了，比如上课，去图书馆等）</p>
 <h3 id="Dom模版解析事项"><a href="#Dom模版解析事项" class="headerlink" title="Dom模版解析事项"></a>Dom模版解析事项</h3><hr>
 <p>&nbsp;&nbsp; 当使用 DOM 作为模板时 (例如，使用 el 选项来把 Vue 实例挂载到一个已有内容的元素上)，会受到 HTML 本身的一些限制，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。要特别注意的是，像 &lt; ul&gt;、&lt; ol&gt;、&lt; table&gt;、&lt; select&gt; 这样的元素里允许包含的元素有限制，而另一些像 &lt; option&gt; 这样的元素只能出现在某些特定元素的内部。</p>
 <p>例如(&lt; my-row&gt;为自定义的组件)：</p>
@@ -696,7 +706,7 @@ new Vue({
   < my-row>< /my-row>
 < /table>
 </code></pre>
-> 此时的自定义组件 < my-row> 被当作无效的内容，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。而此时的table标签还没有被解析，所以在往里面放入自定义组件的时候会导致错误的渲染结果。此时的解决方法是可以使用特殊的 is 特性：
+此时的自定义组件 < my-row> 被当作无效的内容，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。而此时的table标签还没有被解析，所以在往里面放入自定义组件的时候会导致错误的渲染结果。此时的解决方法是可以使用特殊的 is 特性：
 
 <pre><code>
 < table>
@@ -704,17 +714,16 @@ new Vue({
 < /table>
 </code></pre>
 
-<blockquote>
-<p>!!! 如果使用来自以下来源之一的字符串模板，则没有此限制:</p>
+<p> !!! 如果使用来自以下来源之一的字符串模板，则没有此限制:</p>
 <ul>
-<li>&lt; script type=”text/x-template”&gt;</li>
-<li>JavaScript 内联模板字符串 (通过内联的方式使其一同进行加载)</li>
-<li>.vue 组件</li>
-</ul>
-</blockquote>
-<blockquote>
+<li><p>&lt; script type=”text/x-template”&gt;</p>
+</li>
+<li><p>JavaScript 内联模板字符串 (通过内联的方式使其一同进行加载)</p>
+</li>
+<li><p>.vue 组件</p>
 <p>例如：</p>
-</blockquote>
+</li>
+</ul>
 <pre><code>
  new Vue({
    el: '#app',
@@ -727,15 +736,13 @@ new Vue({
 </code></pre>
 
 <h3 id="Vue-实例时传入的选项中data-必须是函数"><a href="#Vue-实例时传入的选项中data-必须是函数" class="headerlink" title="Vue 实例时传入的选项中data 必须是函数"></a>Vue 实例时传入的选项中data 必须是函数</h3><hr>
-<blockquote>
 <p>如果这样的写法：</p>
-</blockquote>
 <pre><code>
  data: {
    msg: 'Welcome to Your Vue.js App'
  }
 </code></pre>
-> 将会报错：
+将会报错：
 <pre><code>
 //Vue 会停止运行，并在控制台发出警告，告诉你在组件实例中 data 必须是一个函数。
  [HMR] Waiting for update signal from WDS...
@@ -778,10 +785,6 @@ data: function () {
   }
 }
 </code></pre>
-
-
-
-
       
     </div>
     <footer class="article-footer">
