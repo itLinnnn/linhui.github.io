@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="林晖的个人博客">
 <meta property="og:description" content="什么是vue的组件（what）? &amp;nbsp;&amp;nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。 一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。 如何使用组件（how）?  前提条件: 使">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-14T16:35:52.000Z">
+<meta property="og:updated_time" content="2018-04-14T16:36:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue的组件的概念与基本使用">
 <meta name="twitter:description" content="什么是vue的组件（what）? &amp;nbsp;&amp;nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。 一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。 如何使用组件（how）?  前提条件: 使">
@@ -152,8 +152,8 @@ new Vue({
   < my-row>< /my-row>
 < /table>
 </code></pre>
-此时的自定义组件 < my-row> 被当作无效的内容，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。而此时的table标签还没有被解析，所以在往里面放入自定义组件的时候会导致错误的渲染结果。此时的解决方法是可以使用特殊的 is 特性：
 
+<p>此时的自定义组件 &lt; my-row&gt; 被当作无效的内容，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。而此时的table标签还没有被解析，所以在往里面放入自定义组件的时候会导致错误的渲染结果。此时的解决方法是可以使用特殊的 is 特性：</p>
 <pre><code>
 
 < table>

@@ -707,8 +707,8 @@ new Vue({
   < my-row>< /my-row>
 < /table>
 </code></pre>
-此时的自定义组件 < my-row> 被当作无效的内容，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。而此时的table标签还没有被解析，所以在往里面放入自定义组件的时候会导致错误的渲染结果。此时的解决方法是可以使用特殊的 is 特性：
 
+<p>此时的自定义组件 &lt; my-row&gt; 被当作无效的内容，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。而此时的table标签还没有被解析，所以在往里面放入自定义组件的时候会导致错误的渲染结果。此时的解决方法是可以使用特殊的 is 特性：</p>
 <pre><code>
 
 < table>
@@ -827,25 +827,53 @@ data: function () {
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的"><a href="#最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的" class="headerlink" title="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的"></a>最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的</h4><ol>
-<li>时间转换成时间戳<blockquote>
+<li><p>时间转换成时间戳</p>
 <p>获取时间</p>
-</blockquote>
+</li>
+</ol>
 <pre><code>
+
 let date = new Date();
 console.log(date);
 //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)
-</code></pre></li>
-</ol>
+</code></pre>
+
 <ul>
-<li>转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000）<br><pre><code><br>let date1 = Date.parse(date);//毫秒级别的数值被转化为000<br>console.log(date1);<br>//输出:1521886920000<br>let date2 = date.valueOf();//通过valueOf()函数返回指定对象的原始值获得准确的时间戳值<br>console.log(date2);<br>//输出:1521886920000<br>let date3 = date.getTime();//通过原型方法直接获得当前时间的毫秒值，准确<br>console.log(date3);<br>//输出:1521886920000<br>let date4 = Number(date);//将时间转化为一个number类型的数值，即时间戳<br>console.log(date4);<br>//输出:1521886920000<br></code></pre><br>2.时间转换为带格式的时间<blockquote>
-<p>格式：yyyy-mm-dd</p>
-</blockquote>
-<pre><code><br>function formatDate(date) {<br> var y = date.getFullYear();<br>  var m = date.getMonth() + 1;<br>  m = m &lt; 10 ? ‘0’ + m : m;<br>  var d = date.getDate();<br>  d = d &lt; 10 ? (‘0’ + d) : d;<br>  return y + ‘-‘ + m + ‘-‘ + d;//这里可以写格式<br>  //输出：2018-03-24<br>}<br></code></pre><blockquote>
-<p>格式：yyyy-mm-dd hh:mm:ss</p>
-</blockquote>
-</li>
+<li>转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000）</li>
 </ul>
 <pre><code>
+
+let date1 = Date.parse(date);//毫秒级别的数值被转化为000
+console.log(date1);
+//输出:1521886920000
+let date2 = date.valueOf();//通过valueOf()函数返回指定对象的原始值获得准确的时间戳值
+console.log(date2);
+//输出:1521886920000
+let date3 = date.getTime();//通过原型方法直接获得当前时间的毫秒值，准确
+console.log(date3);
+//输出:1521886920000
+let date4 = Number(date);//将时间转化为一个number类型的数值，即时间戳
+console.log(date4);
+//输出:1521886920000
+</code></pre>
+
+<p>2.时间转换为带格式的时间<br>格式：yyyy-mm-dd</p>
+<pre><code>
+
+function formatDate(date) {
+   var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? '0' + m : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    return y + '-' + m + '-' + d;//这里可以写格式
+    //输出：2018-03-24
+}
+</code></pre>
+
+<p>格式：yyyy-mm-dd hh:mm:ss</p>
+<pre><code>
+
 function formatDateTime(date) {
     var y = date.getFullYear();
     var m = date.getMonth() + 1;
@@ -862,15 +890,18 @@ function formatDateTime(date) {
 };
     //输出：2018-03-24 18:41:16
 </code></pre>
-3.时间戳转换为带格式的时间
 
+<p>3.时间戳转换为带格式的时间</p>
 <pre><code>
+
 let date5 = new Date(date);//直接用 new Date(时间戳) 格式转化获得时间
 console.log(date5);
 formatDate(date5);//直接调用上方的方法
 </code></pre>
-4.时间格式字符串转为时间戳（毫秒）
+
+<p>4.时间格式字符串转为时间戳（毫秒）</p>
 <pre><code>
+
 let time1='2018-03-24 18:55:16';
 let dateM=new Date(time1.replace(/-/g, '/'));  //开始时间
 let time2=dateM.getTime();
