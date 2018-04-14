@@ -84,24 +84,75 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> ##混入（mixins）<br>在实际的应用中，有很多的业务代码是可以重复使用的，vue.js本身是一个注重于高效率的框架，所以也提供了组件中的复用功能。混入 (mixins) 是一种分发 Vue组件中可复用功能的非常灵活的方式。混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项。如下：<br> <pre><code><br> // 定义一个混入对象<br> var mixinTest = {<br>  created: function () {<br>    this.mixinMethod()<br>  },<br>  methods: {<br>    mixinMethod: function () {<br>      console.log(‘mixinMethod from mixin!’)<br>    }<br>  }<br>}</code></pre></p>
-<p>// 定义一个使用混入对象的组件<br>var Component = Vue.extend({<br>  mixins: [mixinMethod]<br>})</p>
-<p>var component = new Component() // =&gt; “hello from mixin!”<br></p>
-<p> ####组件和混入对象含有同名选项时</p>
-<blockquote>
-<p>从中可以发现当组件混入对象时，对象的方法以及钩子都被混入了该组件的本身。这种方式是很灵活的。那要是组件和混入对象含有同名选项时，也是有规则的，比如， 当数据上和组件有同名时，以组件的数据为先。<br> <pre><code><br>var mixin = {<br>  data: function () {<br>    return {<br>      testA: ‘aaaa’,<br>      testB: ‘bbbb’<br>    }<br>  }<br>}</code></pre></p>
-</blockquote>
-<p>new Vue({<br>  mixins: [mixin],<br>  data: function () {<br>    return {<br>      testA: ‘AAAA’,<br>      testC: ‘CCCC’<br>    }<br>  },<br>  created: function () {<br>    console.log(this.$data)<br>    // =&gt; { testA: “AAAA”, testB: “bbbb”, testC: “CCCC” }<br>  }<br>})<br></p>
-<blockquote>
-<p>mixins对象里的testA和testB混入到了组件中的data中，同时出现了testA与组件同名，所以优先保留了组件的数据。</p>
-</blockquote>
-<p> ####混入对象与组件具有同名钩子函数时<br> <pre><code><br>var mixin = {<br>  created: function () {<br>    console.log(‘混入对象的钩子’)<br>  }<br>}</code></pre></p>
-<p>new Vue({<br>  mixins: [mixin],<br>  created: function () {<br>    console.log(‘组件的钩子’)<br>  }<br>})</p>
-<p>// =&gt; “混入对象的钩子”<br>// =&gt; “组件的钩子”<br></p>
-<blockquote>
-<p>可以发现混入对象的钩子和组件的钩子都会执行，但是会先执行混入对象的钩子</p>
-</blockquote>
-<h4 id="值为对象的选项时，例如：methods，components等的时候"><a href="#值为对象的选项时，例如：methods，components等的时候" class="headerlink" title="值为对象的选项时，例如：methods，components等的时候"></a>值为对象的选项时，例如：methods，components等的时候</h4><pre><code>
+        <h2 id="混入（mixins）"><a href="#混入（mixins）" class="headerlink" title="混入（mixins）"></a>混入（mixins）</h2><p>在实际的应用中，有很多的业务代码是可以重复使用的，vue.js本身是一个注重于高效率的框架，所以也提供了组件中的复用功能。混入 (mixins) 是一种分发 Vue组件中可复用功能的非常灵活的方式。混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项。如下：</p>
+<pre><code>
+// 定义一个混入对象
+var mixinTest = {
+  created: function () {
+    this.mixinMethod()
+  },
+  methods: {
+    mixinMethod: function () {
+      console.log('mixinMethod from mixin!')
+    }
+  }
+}
+
+// 定义一个使用混入对象的组件
+var Component = Vue.extend({
+  mixins: [mixinMethod]
+})
+
+var component = new Component() // => "hello from mixin!"
+</code></pre>
+#### 组件和混入对象含有同名选项时
+> 从中可以发现当组件混入对象时，对象的方法以及钩子都被混入了该组件的本身。这种方式是很灵活的。那要是组件和混入对象含有同名选项时，也是有规则的，比如，当数据上和组件有同名时，以组件的数据为先。
+<pre><code>
+var mixin = {
+  data: function () {
+    return {
+      testA: 'aaaa',
+      testB: 'bbbb'
+    }
+  }
+}
+
+new Vue({
+  mixins: [mixin],
+  data: function () {
+    return {
+      testA: 'AAAA',
+      testC: 'CCCC'
+    }
+  },
+  created: function () {
+    console.log(this.$data)
+    // => { testA: "AAAA", testB: "bbbb", testC: "CCCC" }
+  }
+})
+</code></pre>
+> mixins对象里的testA和testB混入到了组件中的data中，同时出现了testA与组件同名，所以优先保留了组件的数据。
+#### 混入对象与组件具有同名钩子函数时
+<pre><code>
+var mixin = {
+  created: function () {
+    console.log('混入对象的钩子')
+  }
+}
+
+new Vue({
+  mixins: [mixin],
+  created: function () {
+    console.log('组件的钩子')
+  }
+})
+
+// => "混入对象的钩子"
+// => "组件的钩子"
+</code></pre>
+> 可以发现混入对象的钩子和组件的钩子都会执行，但是会先执行混入对象的钩子
+#### 值为对象的选项时，例如：methods，components等的时候
+<pre><code>
 var mixin = {
   methods: {
     mixinsMethod: function () {
