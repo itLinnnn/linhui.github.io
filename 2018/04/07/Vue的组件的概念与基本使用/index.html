@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="林晖的个人博客">
 <meta property="og:description" content="什么是vue的组件（what）? &amp;nbsp;&amp;nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。 一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。 如何使用组件（how）?  前提条件: 使">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-14T16:36:57.000Z">
+<meta property="og:updated_time" content="2018-04-14T16:41:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue的组件的概念与基本使用">
 <meta name="twitter:description" content="什么是vue的组件（what）? &amp;nbsp;&amp;nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。 一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。 如何使用组件（how）?  前提条件: 使">
@@ -147,7 +147,6 @@ new Vue({
 <p>&nbsp;&nbsp; 当使用 DOM 作为模板时 (例如，使用 el 选项来把 Vue 实例挂载到一个已有内容的元素上)，会受到 HTML 本身的一些限制，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。要特别注意的是，像 &lt; ul&gt;、&lt; ol&gt;、&lt; table&gt;、&lt; select&gt; 这样的元素里允许包含的元素有限制，而另一些像 &lt; option&gt; 这样的元素只能出现在某些特定元素的内部。</p>
 <p>例如(&lt; my-row&gt;为自定义的组件)：</p>
 <pre><code>
-
 < table>
   < my-row>< /my-row>
 < /table>
@@ -155,7 +154,6 @@ new Vue({
 
 <p>此时的自定义组件 &lt; my-row&gt; 被当作无效的内容，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。而此时的table标签还没有被解析，所以在往里面放入自定义组件的时候会导致错误的渲染结果。此时的解决方法是可以使用特殊的 is 特性：</p>
 <pre><code>
-
 < table>
   < tr is="my-row">
 < /table>
@@ -192,7 +190,6 @@ new Vue({
 
 <p>将会报错：</p>
 <pre><code>
-
 //Vue 会停止运行，并在控制台发出警告，告诉你在组件实例中 data 必须是一个函数。
  [HMR] Waiting for update signal from WDS...
 vue.esm.js?efeb:591 [Vue warn]: The "data" option should be a function that 
@@ -210,7 +207,6 @@ returns a per-instance value in component definitions.
 
 <pre><code>
 var data = { counter: 0 }
-
 Vue.component('simple-counter', {
   template: '< button v-on:click="counter += 1">{{ counter }}< /button>',
   // data 的确是一个函数了，因此 Vue 不会警告，
@@ -227,7 +223,6 @@ new Vue({
 
 <p> 现在的结果是有三个可以计数的按钮，但是不论点击的是哪一个，所有的按钮的所记数都会加1，因为每个组件实例返回的是同一个对象的引用，不论哪个按钮的对数据进行操作，都会影响到其他的按钮组件计数结果</p>
 <pre><code>
-
 //将其data的格式写成如下，此时每个 counter 都有自己内部的状态了，都是独立存在的，
 每个组件返回的都是全新的数据对象：
 data: function () {

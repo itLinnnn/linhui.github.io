@@ -108,7 +108,6 @@ var component = new Component() // => "hello from mixin!"
 
 <h3 id="组件和混入对象含有同名选项时"><a href="#组件和混入对象含有同名选项时" class="headerlink" title="组件和混入对象含有同名选项时"></a>组件和混入对象含有同名选项时</h3><p> 从中可以发现当组件混入对象时，对象的方法以及钩子都被混入了该组件的本身。这种方式是很灵活的。那要是组件和混入对象含有同名选项时，也是有规则的，比如，当数据上和组件有同名时，以组件的数据为先。</p>
 <pre><code>
-
 var mixin = {
   data: function () {
     return {
@@ -234,34 +233,37 @@ new Vue({
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="什么是内容分发？"><a href="#什么是内容分发？" class="headerlink" title="什么是内容分发？?"></a>什么是内容分发？?</h3><blockquote>
-<p>概括：将父组件的内容放到子组件指定的位置</p>
-</blockquote>
+        <h3 id="什么是内容分发？"><a href="#什么是内容分发？" class="headerlink" title="什么是内容分发？?"></a>什么是内容分发？?</h3><p>概括：将父组件的内容放到子组件指定的位置</p>
 <h4 id="场景：在使用组件时，我们常常需要像这样组合使用"><a href="#场景：在使用组件时，我们常常需要像这样组合使用" class="headerlink" title="场景：在使用组件时，我们常常需要像这样组合使用"></a>场景：在使用组件时，我们常常需要像这样组合使用</h4><pre><code>
 < app>
   < app-header>< /app-header>
   < app-footer>< /app-footer>
 < /app>
 </code></pre>
-> 此时有两个点需要注意：
-* < app> 组件不确定自己所接收的数据。这是由使用 < app> 的父组件所决定的。
-* < app> 作为一个组件使用，可能有自己的模板。 
-##### 所以为了让组件可以很好的组合使用，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为内容分发，也就是将父组件的内容放到子组件的指定位置。
-1. 先了解一下 '编译作用域' 的概念 : 父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译!例如：
+
+<p>此时有两个点需要注意：</p>
+<ul>
+<li><p>&lt; app&gt; 组件不确定自己所接收的数据。这是由使用 &lt; app&gt; 的父组件所决定的。</p>
+</li>
+<li><p>&lt; app&gt; 作为一个组件使用，可能有自己的模板。 </p>
+</li>
+</ul>
+<h5 id="所以为了让组件可以很好的组合使用，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为内容分发，也就是将父组件的内容放到子组件的指定位置。"><a href="#所以为了让组件可以很好的组合使用，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为内容分发，也就是将父组件的内容放到子组件的指定位置。" class="headerlink" title="所以为了让组件可以很好的组合使用，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为内容分发，也就是将父组件的内容放到子组件的指定位置。"></a>所以为了让组件可以很好的组合使用，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为内容分发，也就是将父组件的内容放到子组件的指定位置。</h5><ol>
+<li>先了解一下 ‘编译作用域’ 的概念 : 父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译!例如：</li>
+</ol>
 <pre><code>
 < child-component>
   {{ message }}
 < /child-component>
 </code></pre>
-> 此时的message应该绑定的是父组件的数据还是子组件的数据？答案是父组件，这就是编译作用域。再看一个很容易犯错误的例子：
+
+<p>此时的message应该绑定的是父组件的数据还是子组件的数据？答案是父组件，这就是编译作用域。再看一个很容易犯错误的例子：</p>
 <pre><code>
 //childProperty是子组件中的属性，此时的代码不会如我们预期生效。父组件模版不能取到子组件中的状态
 < child-component v-show="childProperty">< /child-component>
 </code></pre>
 
-<blockquote>
 <p>根据编译作用域，此时正确的做法应该是在子组件模版中进行操作，绑定到相对应的节点中，如下：</p>
-</blockquote>
 <pre><code>
 Vue.component('child-component', {
   // 有效，因为是在正确的作用域内
@@ -273,14 +275,14 @@ Vue.component('child-component', {
   }
 })
 </code></pre>
-### 单个插槽
-#### 场景： 当在父组件模版中使用子组件时，父组件的内容将会被丢弃，如下子组件child-component：
-<pre><code>
+
+<h3 id="单个插槽"><a href="#单个插槽" class="headerlink" title="单个插槽"></a>单个插槽</h3><h4 id="场景：-当在父组件模版中使用子组件时，父组件的内容将会被丢弃，如下子组件child-component："><a href="#场景：-当在父组件模版中使用子组件时，父组件的内容将会被丢弃，如下子组件child-component：" class="headerlink" title="场景： 当在父组件模版中使用子组件时，父组件的内容将会被丢弃，如下子组件child-component："></a>场景： 当在父组件模版中使用子组件时，父组件的内容将会被丢弃，如下子组件child-component：</h4><pre><code>
 < div>
   < h2>我是子组件的标题< /h2>
 < /div>
 </code></pre>
-> 父组件模板:
+
+<p>父组件模板:</p>
 <pre><code>
 < div>
   < h1>我是父组件的标题< /h1>
@@ -290,7 +292,8 @@ Vue.component('child-component', {
   < /child-component>
 < /div>
 </code></pre>
-> 此时的渲染结果为：
+
+<p>此时的渲染结果为：</p>
 <pre><code>
 < div>
   < h1>我是父组件的标题
@@ -299,7 +302,8 @@ Vue.component('child-component', {
   < /div>
 
 </code></pre>
->此时父组件里面的内容就会被替换，此时的解决方法是可以使用slot单个插槽，例如在上面的子组件child-component中:
+
+<p>此时父组件里面的内容就会被替换，此时的解决方法是可以使用slot单个插槽，例如在上面的子组件child-component中:</p>
 <pre><code>
 < div>
   < h2>我是子组件的标题< /h2>
@@ -308,7 +312,8 @@ Vue.component('child-component', {
   < /solt>
 < /div>
 </code></pre>
-> 此时的渲染结果就是 ：
+
+<p>此时的渲染结果就是 ：</p>
 <pre><code>
 < div>
   < h1>我是父组件的标题
@@ -319,24 +324,24 @@ Vue.component('child-component', {
   < /div>
 
 </code></pre>
-> 此时的父组件的内容不会被丢弃。子组件模板只有一个没有属性的插槽时，父组件传入的整个内容片段将插入到插槽所在的 DOM 位置，并替换掉插槽标签本身。
-最初在 <slot> 标签中的任何内容都被视为备用内容。备用内容在子组件的作用域内编译，并且只有在宿主元素为空，且没有要插入的内容时才显示备用内容。
-### 具名插槽
-> <slot> 元素可以用一个特殊的特性 name 来进一步配置如何分发内容。多个插槽可以有不同的名字。具名插槽将匹配内容片段中有对应 slot 特性的元素。仍然可以有一个匿名插槽，它是默认插槽，作为找不到匹配的内容片段的备用插槽。如果没有默认插槽，这些找不到匹配的内容片段将被抛弃。如下一个child-layout：
+
+<p>此时的父组件的内容不会被丢弃。子组件模板只有一个没有属性的插槽时，父组件传入的整个内容片段将插入到插槽所在的 DOM 位置，并替换掉插槽标签本身。<br>最初在 <slot> 标签中的任何内容都被视为备用内容。备用内容在子组件的作用域内编译，并且只有在宿主元素为空，且没有要插入的内容时才显示备用内容。</slot></p>
+<h3 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h3><p><slot> 元素可以用一个特殊的特性 name 来进一步配置如何分发内容。多个插槽可以有不同的名字。具名插槽将匹配内容片段中有对应 slot 特性的元素。仍然可以有一个匿名插槽，它是默认插槽，作为找不到匹配的内容片段的备用插槽。如果没有默认插槽，这些找不到匹配的内容片段将被抛弃。如下一个child-layout：</slot></p>
 <pre><code>
 < div class="container">
   < header>
-    < slot name="header"></code></pre></slot>
+    < slot name="header">
   < /header>
   < main>
     < slot>< /slot>
   < /main>
   < footer>
-    < slot name="footer"></slot>
+    < slot name="footer">
   < /footer>
 < /div>
+</code></pre>
 
-> 父组件模板
+<p>父组件模板</p>
 <pre><code>
 < child-layout>
   < h1 slot="header">页面标题< /h1>
@@ -344,7 +349,8 @@ Vue.component('child-component', {
   < p slot="footer">一些信息< /p>
 < /child-layout>
 </code></pre>
->此时的渲染结果为：
+
+<p>此时的渲染结果为：</p>
 <pre><code>
 < div class="container">
   < header>
@@ -358,15 +364,16 @@ Vue.component('child-component', {
   < /footer>
 
 </code></pre>
-> 由于使用了具名插槽，也就是使用了slot的name属性，使得父组件的内容被插到了子组件的指定位置。由于在子组件的main中使用了匿名slot,所以在父组件的模版中的p标签也没有用name属性，所以就行默认配对，如果此时没有匿名slot那么p标签的内容将会被抛弃。
-### 作用域插槽
-> 作用域插槽是一种特殊类型的插槽，用作一个 (能被传递数据的) 可重用模板，来代替已经渲染好的元素。在子组件中，只需将数据传递到插槽，就像你将 prop 传递给组件一样,例如在子组件中：
+
+<p>由于使用了具名插槽，也就是使用了slot的name属性，使得父组件的内容被插到了子组件的指定位置。由于在子组件的main中使用了匿名slot,所以在父组件的模版中的p标签也没有用name属性，所以就行默认配对，如果此时没有匿名slot那么p标签的内容将会被抛弃。</p>
+<h3 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h3><p>作用域插槽是一种特殊类型的插槽，用作一个 (能被传递数据的) 可重用模板，来代替已经渲染好的元素。在子组件中，只需将数据传递到插槽，就像你将 prop 传递给组件一样,例如在子组件中：</p>
 <pre><code>
 < div class="child">
   < slot data="data from child">< /slot>
 < /div>
 </code></pre>
-> 此时在父组件模版中，必须要有< template >元素存在，并且要使用特殊属性slot-scope，以此表示它是作用域插槽的模板。slot-scope 的值将被用作一个临时变量名，此变量接收从子组件传递过来的 prop 对象，比如现在有父组件：
+
+<p>此时在父组件模版中，必须要有&lt; template &gt;元素存在，并且要使用特殊属性slot-scope，以此表示它是作用域插槽的模板。slot-scope 的值将被用作一个临时变量名，此变量接收从子组件传递过来的 prop 对象，比如现在有父组件：</p>
 <pre><code>
 < div class="parent">
   < child>
@@ -377,7 +384,8 @@ Vue.component('child-component', {
   < /child>
 < /div>
 </code></pre>
-> 此时渲染的结果是：
+
+<p>此时渲染的结果是：</p>
 <pre><code>
 < div class="parent">
   < div class="child">
@@ -386,10 +394,6 @@ Vue.component('child-component', {
   < /div>
 < /div>
 </code></pre>
-
-
-
-
       
     </div>
     <footer class="article-footer">
@@ -702,7 +706,6 @@ new Vue({
 <p>&nbsp;&nbsp; 当使用 DOM 作为模板时 (例如，使用 el 选项来把 Vue 实例挂载到一个已有内容的元素上)，会受到 HTML 本身的一些限制，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。要特别注意的是，像 &lt; ul&gt;、&lt; ol&gt;、&lt; table&gt;、&lt; select&gt; 这样的元素里允许包含的元素有限制，而另一些像 &lt; option&gt; 这样的元素只能出现在某些特定元素的内部。</p>
 <p>例如(&lt; my-row&gt;为自定义的组件)：</p>
 <pre><code>
-
 < table>
   < my-row>< /my-row>
 < /table>
@@ -710,7 +713,6 @@ new Vue({
 
 <p>此时的自定义组件 &lt; my-row&gt; 被当作无效的内容，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。而此时的table标签还没有被解析，所以在往里面放入自定义组件的时候会导致错误的渲染结果。此时的解决方法是可以使用特殊的 is 特性：</p>
 <pre><code>
-
 < table>
   < tr is="my-row">
 < /table>
@@ -747,7 +749,6 @@ new Vue({
 
 <p>将会报错：</p>
 <pre><code>
-
 //Vue 会停止运行，并在控制台发出警告，告诉你在组件实例中 data 必须是一个函数。
  [HMR] Waiting for update signal from WDS...
 vue.esm.js?efeb:591 [Vue warn]: The "data" option should be a function that 
@@ -765,7 +766,6 @@ returns a per-instance value in component definitions.
 
 <pre><code>
 var data = { counter: 0 }
-
 Vue.component('simple-counter', {
   template: '< button v-on:click="counter += 1">{{ counter }}< /button>',
   // data 的确是一个函数了，因此 Vue 不会警告，
@@ -782,7 +782,6 @@ new Vue({
 
 <p> 现在的结果是有三个可以计数的按钮，但是不论点击的是哪一个，所有的按钮的所记数都会加1，因为每个组件实例返回的是同一个对象的引用，不论哪个按钮的对数据进行操作，都会影响到其他的按钮组件计数结果</p>
 <pre><code>
-
 //将其data的格式写成如下，此时每个 counter 都有自己内部的状态了，都是独立存在的，
 每个组件返回的都是全新的数据对象：
 data: function () {
@@ -832,7 +831,6 @@ data: function () {
 </li>
 </ol>
 <pre><code>
-
 let date = new Date();
 console.log(date);
 //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)
@@ -842,7 +840,6 @@ console.log(date);
 <li>转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000）</li>
 </ul>
 <pre><code>
-
 let date1 = Date.parse(date);//毫秒级别的数值被转化为000
 console.log(date1);
 //输出:1521886920000
@@ -859,7 +856,6 @@ console.log(date4);
 
 <p>2.时间转换为带格式的时间<br>格式：yyyy-mm-dd</p>
 <pre><code>
-
 function formatDate(date) {
    var y = date.getFullYear();
     var m = date.getMonth() + 1;
@@ -873,7 +869,6 @@ function formatDate(date) {
 
 <p>格式：yyyy-mm-dd hh:mm:ss</p>
 <pre><code>
-
 function formatDateTime(date) {
     var y = date.getFullYear();
     var m = date.getMonth() + 1;
@@ -893,7 +888,6 @@ function formatDateTime(date) {
 
 <p>3.时间戳转换为带格式的时间</p>
 <pre><code>
-
 let date5 = new Date(date);//直接用 new Date(时间戳) 格式转化获得时间
 console.log(date5);
 formatDate(date5);//直接调用上方的方法
@@ -901,7 +895,6 @@ formatDate(date5);//直接调用上方的方法
 
 <p>4.时间格式字符串转为时间戳（毫秒）</p>
 <pre><code>
-
 let time1='2018-03-24 18:55:16';
 let dateM=new Date(time1.replace(/-/g, '/'));  //开始时间
 let time2=dateM.getTime();
