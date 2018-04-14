@@ -62,6 +62,197 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Vue的内容分发slot的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/linhui.github.io/2018/04/14/Vue的内容分发slot的使用/" class="article-date">
+  <time datetime="2018-04-14T15:48:31.000Z" itemprop="datePublished">2018-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/linhui.github.io/2018/04/14/Vue的内容分发slot的使用/">Vue的内容分发slot的使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是内容分发？"><a href="#什么是内容分发？" class="headerlink" title="什么是内容分发？?"></a>什么是内容分发？?</h3><blockquote>
+<p>概括：将父组件的内容放到子组件指定的位置</p>
+</blockquote>
+<h4 id="场景：在使用组件时，我们常常需要像这样组合使用"><a href="#场景：在使用组件时，我们常常需要像这样组合使用" class="headerlink" title="场景：在使用组件时，我们常常需要像这样组合使用"></a>场景：在使用组件时，我们常常需要像这样组合使用</h4><pre><code>
+< app>
+  < app-header>< /app-header>
+  < app-footer>< /app-footer>
+< /app>
+</code></pre>
+> 此时有两个点需要注意：
+* < app> 组件不确定自己所接收的数据。这是由使用 < app> 的父组件所决定的。
+* < app> 作为一个组件使用，可能有自己的模板。 
+##### 所以为了让组件可以很好的组合使用，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为内容分发，也就是将父组件的内容放到子组件的指定位置。
+1. 先了解一下 '编译作用域' 的概念 : 父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译!例如：
+<pre><code>
+< child-component>
+  {{ message }}
+< /child-component>
+</code></pre>
+> 此时的message应该绑定的是父组件的数据还是子组件的数据？答案是父组件，这就是编译作用域。再看一个很容易犯错误的例子：
+<pre><code>
+//childProperty是子组件中的属性，此时的代码不会如我们预期生效。父组件模版不能取到子组件中的状态
+< child-component v-show="childProperty">< /child-component>
+</code></pre>
+
+<blockquote>
+<p>根据编译作用域，此时正确的做法应该是在子组件模版中进行操作，绑定到相对应的节点中，如下：</p>
+</blockquote>
+<pre><code>
+Vue.component('child-component', {
+  // 有效，因为是在正确的作用域内
+  template: '< div v-show="childProperty">Child',
+  data: function () {
+    return {
+      childProperty: true
+    }
+  }
+})
+</code></pre>
+### 单个插槽
+#### 场景： 当在父组件模版中使用子组件时，父组件的内容将会被丢弃，如下子组件child-component：
+<pre><code>
+< div>
+  < h2>我是子组件的标题< /h2>
+< /div>
+</code></pre>
+> 父组件模板:
+<pre><code>
+< div>
+  < h1>我是父组件的标题< /h1>
+  < child-component>
+    < p>这是一些初始内容< /p>
+    < p>这是更多的初始内容< /p>
+  < /child-component>
+< /div>
+</code></pre>
+> 此时的渲染结果为：
+<pre><code>
+< div>
+  < h1>我是父组件的标题
+  < div>
+    < h2>我是子组件的标题< /h2>
+  < /div>
+
+</code></pre>
+>此时父组件里面的内容就会被替换，此时的解决方法是可以使用slot单个插槽，例如在上面的子组件child-component中:
+<pre><code>
+< div>
+  < h2>我是子组件的标题< /h2>
+  < slot>
+   在没有要分发的内容时才会显示。
+  < /solt>
+< /div>
+</code></pre>
+> 此时的渲染结果就是 ：
+<pre><code>
+< div>
+  < h1>我是父组件的标题
+  < div>
+    < h2>我是子组件的标题< /h2>
+     < p>这是一些初始内容< /p>
+    < p>这是更多的初始内容< /p>
+  < /div>
+
+</code></pre>
+> 此时的父组件的内容不会被丢弃。子组件模板只有一个没有属性的插槽时，父组件传入的整个内容片段将插入到插槽所在的 DOM 位置，并替换掉插槽标签本身。
+最初在 <slot> 标签中的任何内容都被视为备用内容。备用内容在子组件的作用域内编译，并且只有在宿主元素为空，且没有要插入的内容时才显示备用内容。
+### 具名插槽
+> <slot> 元素可以用一个特殊的特性 name 来进一步配置如何分发内容。多个插槽可以有不同的名字。具名插槽将匹配内容片段中有对应 slot 特性的元素。仍然可以有一个匿名插槽，它是默认插槽，作为找不到匹配的内容片段的备用插槽。如果没有默认插槽，这些找不到匹配的内容片段将被抛弃。如下一个child-layout：
+<pre><code>
+< div class="container">
+  < header>
+    < slot name="header"></code></pre></slot>
+  < /header>
+  < main>
+    < slot>< /slot>
+  < /main>
+  < footer>
+    < slot name="footer"></slot>
+  < /footer>
+< /div>
+
+> 父组件模板
+<pre><code>
+< child-layout>
+  < h1 slot="header">页面标题< /h1>
+  < p>主要内容< /p>
+  < p slot="footer">一些信息< /p>
+< /child-layout>
+</code></pre>
+>此时的渲染结果为：
+<pre><code>
+< div class="container">
+  < header>
+    < h1>页面标题< /h1>
+  < /header>
+  < main>
+    < p>主要内容。< /p>
+  < /main>
+  < footer>
+    < p>一些信息< /p>
+  < /footer>
+
+</code></pre>
+> 由于使用了具名插槽，也就是使用了slot的name属性，使得父组件的内容被插到了子组件的指定位置。由于在子组件的main中使用了匿名slot,所以在父组件的模版中的p标签也没有用name属性，所以就行默认配对，如果此时没有匿名slot那么p标签的内容将会被抛弃。
+### 作用域插槽
+> 作用域插槽是一种特殊类型的插槽，用作一个 (能被传递数据的) 可重用模板，来代替已经渲染好的元素。在子组件中，只需将数据传递到插槽，就像你将 prop 传递给组件一样,例如在子组件中：
+<pre><code>
+< div class="child">
+  < slot data="data from child">< /slot>
+< /div>
+</code></pre>
+> 此时在父组件模版中，必须要有< template >元素存在，并且要使用特殊属性slot-scope，以此表示它是作用域插槽的模板。slot-scope 的值将被用作一个临时变量名，此变量接收从子组件传递过来的 prop 对象，比如现在有父组件：
+<pre><code>
+< div class="parent">
+  < child>
+    < template slot-scope="props">
+      < span>data from parent< /span>
+      < span>{{ props.data }}< /span>
+    < /template>
+  < /child>
+< /div>
+</code></pre>
+> 此时渲染的结果是：
+<pre><code>
+< div class="parent">
+  < div class="child">
+    < span>data from parent< /span>
+    < span>data from child< /span>
+  < /div>
+< /div>
+</code></pre>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://itlinnnn.github.io/linhui.github.io/2018/04/14/Vue的内容分发slot的使用/" data-id="cjfzk8gvu0001gixeunhqedp2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue组件间的通信" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/linhui.github.io/2018/04/07/vue组件间的通信/" class="article-date">
@@ -268,7 +459,7 @@ var child = {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://itlinnnn.github.io/linhui.github.io/2018/04/07/vue组件间的通信/" data-id="cjfq4r5k10002imxejy6ukxw5" class="article-share-link">Share</a>
+      <a data-url="https://itlinnnn.github.io/linhui.github.io/2018/04/07/vue组件间的通信/" data-id="cjfzk8gvq0000gixezhn4i3bz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,7 +635,7 @@ data: function () {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://itlinnnn.github.io/linhui.github.io/2018/04/07/Vue的组件的概念与基本使用/" data-id="cjfq4r5jt0000imxefegtsbcu" class="article-share-link">Share</a>
+      <a data-url="https://itlinnnn.github.io/linhui.github.io/2018/04/07/Vue的组件的概念与基本使用/" data-id="cjfzk8gvy0003gixezk6lhzft" class="article-share-link">Share</a>
       
       
     </footer>
@@ -531,7 +722,7 @@ console.log(time2);
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://itlinnnn.github.io/linhui.github.io/2018/04/07/时间、时间戳、带格式时间的转换/" data-id="cjfq4r5jy0001imxe549vocnq" class="article-share-link">Share</a>
+      <a data-url="https://itlinnnn.github.io/linhui.github.io/2018/04/07/时间、时间戳、带格式时间的转换/" data-id="cjfzk8gvw0002gixeklbrfi2y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -578,7 +769,7 @@ console.log(time2);
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://itlinnnn.github.io/linhui.github.io/2018/04/07/运用node实现简单爬虫/" data-id="cjfq4r5k30003imxe2bpc494w" class="article-share-link">Share</a>
+      <a data-url="https://itlinnnn.github.io/linhui.github.io/2018/04/07/运用node实现简单爬虫/" data-id="cjfzk8gvz0004gixeesd3g1tu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -617,6 +808,10 @@ console.log(time2);
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/linhui.github.io/2018/04/14/Vue的内容分发slot的使用/">Vue的内容分发slot的使用</a>
+          </li>
         
           <li>
             <a href="/linhui.github.io/2018/04/07/vue组件间的通信/">vue组件间的通信</a>
