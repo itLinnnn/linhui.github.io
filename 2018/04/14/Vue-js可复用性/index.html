@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="林晖的个人博客">
 <meta property="og:description" content="混入（mixins）在实际的应用中，有很多的业务代码是可以重复使用的，vue.js本身是一个注重于高效率的框架，所以也提供了组件中的复用功能。混入 (mixins) 是一种分发 Vue组件中可复用功能的非常灵活的方式。混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项。如下：  // 定义一个混入对象 var mixinTest = {   create">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-14T16:20:54.000Z">
+<meta property="og:updated_time" content="2018-04-14T16:22:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js可复用性">
 <meta name="twitter:description" content="混入（mixins）在实际的应用中，有很多的业务代码是可以重复使用的，vue.js本身是一个注重于高效率的框架，所以也提供了组件中的复用功能。混入 (mixins) 是一种分发 Vue组件中可复用功能的非常灵活的方式。混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项。如下：  // 定义一个混入对象 var mixinTest = {   create">
@@ -153,11 +153,9 @@ new Vue({
 // => "混入对象的钩子"
 // => "组件的钩子"
 </code></pre>
-> 可以发现混入对象的钩子和组件的钩子都会执行，但是会先执行混入对象的钩子
 
-#### 值为对象的选项时，例如：methods，components等的时候
-
-<pre><code>
+<p>可以发现混入对象的钩子和组件的钩子都会执行，但是会先执行混入对象的钩子</p>
+<h4 id="值为对象的选项时，例如：methods，components等的时候"><a href="#值为对象的选项时，例如：methods，components等的时候" class="headerlink" title="值为对象的选项时，例如：methods，components等的时候"></a>值为对象的选项时，例如：methods，components等的时候</h4><pre><code>
 var mixin = {
   methods: {
     mixinsMethod: function () {
@@ -185,12 +183,9 @@ vm.mixinsMethod() // => "mixinsMethod"
 vm.selfMethod() // => "selfMethod"
 vm.sameMethod() // => "from self"
 </code></pre>
-由上可得，在值为对象的混入对象混入时，这些将和组件原有的选项混合一起成为一个对象，当对象的键名与组件的键名出现重复时，会使用组件的键名。
 
-#### 全局混入
-
-以上列举的都是单独的引入到某一个组件中使用。也可以全局注册混入对象。这样的话所有的实例就都会被混入的对象所作用。也可以根据自己需要做成一个具体的使用工具类。供全局所有的实例使用。不过也要小心使用，毕竟会影响到所有的组件，需要结合实际场景使用。
-
+<p>由上可得，在值为对象的混入对象混入时，这些将和组件原有的选项混合一起成为一个对象，当对象的键名与组件的键名出现重复时，会使用组件的键名。</p>
+<h4 id="全局混入"><a href="#全局混入" class="headerlink" title="全局混入"></a>全局混入</h4><p>以上列举的都是单独的引入到某一个组件中使用。也可以全局注册混入对象。这样的话所有的实例就都会被混入的对象所作用。也可以根据自己需要做成一个具体的使用工具类。供全局所有的实例使用。不过也要小心使用，毕竟会影响到所有的组件，需要结合实际场景使用。</p>
 <pre><code>
 Vue.mixin({
   created: function () {
