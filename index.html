@@ -132,11 +132,9 @@ new Vue({
   }
 })
 </code></pre>
-mixins对象里的testA和testB混入到了组件中的data中，同时出现了testA与组件同名，所以优先保留了组件的数据。
 
-#### 混入对象与组件具有同名钩子函数时
-
-<pre><code>
+<p>mixins对象里的testA和testB混入到了组件中的data中，同时出现了testA与组件同名，所以优先保留了组件的数据。</p>
+<h3 id="混入对象与组件具有同名钩子函数时"><a href="#混入对象与组件具有同名钩子函数时" class="headerlink" title="混入对象与组件具有同名钩子函数时"></a>混入对象与组件具有同名钩子函数时</h3><pre><code>
 var mixin = {
   created: function () {
     console.log('混入对象的钩子')
