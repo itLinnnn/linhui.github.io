@@ -702,6 +702,7 @@ new Vue({
 <p>&nbsp;&nbsp; 当使用 DOM 作为模板时 (例如，使用 el 选项来把 Vue 实例挂载到一个已有内容的元素上)，会受到 HTML 本身的一些限制，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。要特别注意的是，像 &lt; ul&gt;、&lt; ol&gt;、&lt; table&gt;、&lt; select&gt; 这样的元素里允许包含的元素有限制，而另一些像 &lt; option&gt; 这样的元素只能出现在某些特定元素的内部。</p>
 <p>例如(&lt; my-row&gt;为自定义的组件)：</p>
 <pre><code>
+
 < table>
   < my-row>< /my-row>
 < /table>
@@ -709,6 +710,7 @@ new Vue({
 此时的自定义组件 < my-row> 被当作无效的内容，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。而此时的table标签还没有被解析，所以在往里面放入自定义组件的时候会导致错误的渲染结果。此时的解决方法是可以使用特殊的 is 特性：
 
 <pre><code>
+
 < table>
   < tr is="my-row">
 < /table>
@@ -742,14 +744,17 @@ new Vue({
    msg: 'Welcome to Your Vue.js App'
  }
 </code></pre>
-将会报错：
+
+<p>将会报错：</p>
 <pre><code>
+
 //Vue 会停止运行，并在控制台发出警告，告诉你在组件实例中 data 必须是一个函数。
  [HMR] Waiting for update signal from WDS...
 vue.esm.js?efeb:591 [Vue warn]: The "data" option should be a function that 
 returns a per-instance value in component definitions.
 </code></pre>
->举个例子来对比一下：
+
+<p>举个例子来对比一下：</p>
 <pre><code>
 < div id="example">
   < simple-counter>< /simple-counter>
@@ -774,9 +779,10 @@ new Vue({
   el: '#example'
 })
 </code></pre>
-> 现在的结果是有三个可以计数的按钮，但是不论点击的是哪一个，所有的按钮的所记数都会加1，因为每个组件实例返回的是同一个对象的引用，不论哪个按钮的对数据进行操作，都会影响到其他的按钮组件计数结果
 
+<p> 现在的结果是有三个可以计数的按钮，但是不论点击的是哪一个，所有的按钮的所记数都会加1，因为每个组件实例返回的是同一个对象的引用，不论哪个按钮的对数据进行操作，都会影响到其他的按钮组件计数结果</p>
 <pre><code>
+
 //将其data的格式写成如下，此时每个 counter 都有自己内部的状态了，都是独立存在的，
 每个组件返回的都是全新的数据对象：
 data: function () {
