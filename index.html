@@ -126,7 +126,7 @@ Vue.component('anchored-heading', {
 </code></pre>
 
 <p>此时的组件根据prop取到的数据size值进行选择标签的类型，从而完成动态生成title-size标签的组件。但是这样的话是我们在template中定义不同的h1~h6的标签，然后再去根绝size的值来决定取得是哪个标签，这样的话在数据的处理上显得被动不灵活。并且用这种方式处理时，需要重复使用&lt; slot&gt;&lt; /slot&gt;来插入title-size的内容，反正总结起来就是低效。</p>
-<h4 id="此时可以尝试render函数重写上面的例子"><a href="#此时可以尝试render函数重写上面的例子" class="headerlink" title="此时可以尝试render函数重写上面的例子"></a>此时可以尝试render函数重写上面的例子</h4><pre><code>
+<h4 id="这个时候可以尝试render函数重写上面的例子"><a href="#这个时候可以尝试render函数重写上面的例子" class="headerlink" title="这个时候可以尝试render函数重写上面的例子"></a>这个时候可以尝试render函数重写上面的例子</h4><pre><code>
 Vue.component('anchored-heading', {
   render: function (createElement) {
     return createElement(

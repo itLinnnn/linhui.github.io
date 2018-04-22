@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="林晖的个人博客">
 <meta property="og:description" content="在Vue中，我们都是绝大部分都是使用template来创建html,框架给予了很好的支持，使用起来也很方便，符合常规的编程方式。但是在一些特殊的场景需要有特殊的判断时，使用template显得会低效率，并且代码的可读性也不高。此时我们可以用到render函数，使用javascript的完全编程能力来实现html的创建。情景： //要求是通过size的值来动态生成title-size标签的组件 &amp;lt;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-22T01:20:14.000Z">
+<meta property="og:updated_time" content="2018-04-22T01:21:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue的渲染函数">
 <meta name="twitter:description" content="在Vue中，我们都是绝大部分都是使用template来创建html,框架给予了很好的支持，使用起来也很方便，符合常规的编程方式。但是在一些特殊的场景需要有特殊的判断时，使用template显得会低效率，并且代码的可读性也不高。此时我们可以用到render函数，使用javascript的完全编程能力来实现html的创建。情景： //要求是通过size的值来动态生成title-size标签的组件 &amp;lt;">
@@ -128,7 +128,7 @@ Vue.component('anchored-heading', {
 </code></pre>
 
 <p>此时的组件根据prop取到的数据size值进行选择标签的类型，从而完成动态生成title-size标签的组件。但是这样的话是我们在template中定义不同的h1~h6的标签，然后再去根绝size的值来决定取得是哪个标签，这样的话在数据的处理上显得被动不灵活。并且用这种方式处理时，需要重复使用&lt; slot&gt;&lt; /slot&gt;来插入title-size的内容，反正总结起来就是低效。</p>
-<h4 id="此时可以尝试render函数重写上面的例子"><a href="#此时可以尝试render函数重写上面的例子" class="headerlink" title="此时可以尝试render函数重写上面的例子"></a>此时可以尝试render函数重写上面的例子</h4><pre><code>
+<h4 id="这个时候可以尝试render函数重写上面的例子"><a href="#这个时候可以尝试render函数重写上面的例子" class="headerlink" title="这个时候可以尝试render函数重写上面的例子"></a>这个时候可以尝试render函数重写上面的例子</h4><pre><code>
 Vue.component('anchored-heading', {
   render: function (createElement) {
     return createElement(
