@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="林晖的个人博客">
 <meta property="og:description" content="在Vue中，我们都是绝大部分都是使用template来创建html,框架给予了很好的支持，使用起来也很方便，符合常规的编程方式。但是在一些特殊的场景需要有特殊的判断时，使用template显得会低效率，并且代码的可读性也不高。此时我们可以用到render函数，使用javascript的完全编程能力来实现html的创建。情景： //要求是通过size的值来动态生成title-size标签的组件 &amp;lt;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-22T01:11:53.000Z">
+<meta property="og:updated_time" content="2018-04-22T01:19:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue的渲染函数">
 <meta name="twitter:description" content="在Vue中，我们都是绝大部分都是使用template来创建html,框架给予了很好的支持，使用起来也很方便，符合常规的编程方式。但是在一些特殊的场景需要有特殊的判断时，使用template显得会低效率，并且代码的可读性也不高。此时我们可以用到render函数，使用javascript的完全编程能力来实现html的创建。情景： //要求是通过size的值来动态生成title-size标签的组件 &amp;lt;">
@@ -91,9 +91,7 @@
 < title-size :size="1">Hello world!< /title-size>
 </code></pre>
 
-<blockquote>
 <p>此时采用之前的常规做法，我们会选择</p>
-</blockquote>
 <pre><code>
 < script type="text/x-template" id="titleSize-template">
   < h1 v-if="size === 1">
@@ -147,12 +145,8 @@ Vue.component('anchored-heading', {
 })
 </code></pre>
 
-<h4 id="此时就显得很灵活，直接根据传入的size值进行创建对应的标签，并且也不需要再写那么多冗长的代码了。"><a href="#此时就显得很灵活，直接根据传入的size值进行创建对应的标签，并且也不需要再写那么多冗长的代码了。" class="headerlink" title="此时就显得很灵活，直接根据传入的size值进行创建对应的标签，并且也不需要再写那么多冗长的代码了。"></a>此时就显得很灵活，直接根据传入的size值进行创建对应的标签，并且也不需要再写那么多冗长的代码了。</h4><blockquote>
-<p>注释： this.$slots.default对用 template的<slot>的使用没有name（作用相当于以上例子中的slot标签）</slot></p>
-</blockquote>
-<h3 id="节点、树以及虚拟-DOM"><a href="#节点、树以及虚拟-DOM" class="headerlink" title="节点、树以及虚拟 DOM"></a>节点、树以及虚拟 DOM</h3><blockquote>
-<p>深入渲染函数之前，我们需要了解一些浏览器的工作原理，当浏览器读html代码时，它会建立一个“DOM 节点”树来保持追踪。每个元素都是一个节点。每片文字也是一个节点。甚至注释也都是节点。一个节点就是页面的一个部分。就像家谱树一样，每个节点都可以有孩子节点 (也就是说每个部分可以包含其它的一些部分)。js的运行速度是很快的，但是dom的渲染确实很慢的，往往是影响性能的一个重要因素。</p>
-</blockquote>
+<h4 id="此时就显得很灵活，直接根据传入的size值进行创建对应的标签，并且也不需要再写那么多冗长的代码了。"><a href="#此时就显得很灵活，直接根据传入的size值进行创建对应的标签，并且也不需要再写那么多冗长的代码了。" class="headerlink" title="此时就显得很灵活，直接根据传入的size值进行创建对应的标签，并且也不需要再写那么多冗长的代码了。"></a>此时就显得很灵活，直接根据传入的size值进行创建对应的标签，并且也不需要再写那么多冗长的代码了。</h4><p>注释： this.$slots.default对用 template的<slot>的使用没有name（作用相当于以上例子中的slot标签）</slot></p>
+<h3 id="节点、树以及虚拟-DOM"><a href="#节点、树以及虚拟-DOM" class="headerlink" title="节点、树以及虚拟 DOM"></a>节点、树以及虚拟 DOM</h3><p>深入渲染函数之前，我们需要了解一些浏览器的工作原理，当浏览器读html代码时，它会建立一个“DOM 节点”树来保持追踪。每个元素都是一个节点。每片文字也是一个节点。甚至注释也都是节点。一个节点就是页面的一个部分。就像家谱树一样，每个节点都可以有孩子节点 (也就是说每个部分可以包含其它的一些部分)。js的运行速度是很快的，但是dom的渲染确实很慢的，往往是影响性能的一个重要因素。</p>
 <h4 id="但是vue是数据驱动的，不需要我们去手动更新节点。只需要告诉-Vue-你希望页面上的-HTML-是什么"><a href="#但是vue是数据驱动的，不需要我们去手动更新节点。只需要告诉-Vue-你希望页面上的-HTML-是什么" class="headerlink" title="但是vue是数据驱动的，不需要我们去手动更新节点。只需要告诉 Vue 你希望页面上的 HTML 是什么"></a>但是vue是数据驱动的，不需要我们去手动更新节点。只需要告诉 Vue 你希望页面上的 HTML 是什么</h4><pre><code>
 < h1>{{ testData }}< /h1>
 </code></pre>
@@ -163,19 +157,13 @@ render: function (createElement) {
 }
 </code></pre>
 
-<blockquote>
 <p>当数据发生改变时，页面的dom都会被及时高效的去渲染，而不需要自己去做其他的处理。</p>
-</blockquote>
-<h4 id="虚拟-DOM"><a href="#虚拟-DOM" class="headerlink" title="虚拟 DOM"></a>虚拟 DOM</h4><blockquote>
-<p>Vue 通过建立一个虚拟 DOM 对真实 DOM 发生的变化保持追踪。可以做个例子：</p>
-</blockquote>
+<h4 id="虚拟-DOM"><a href="#虚拟-DOM" class="headerlink" title="虚拟 DOM"></a>虚拟 DOM</h4><p>Vue 通过建立一个虚拟 DOM 对真实 DOM 发生的变化保持追踪。可以做个例子：</p>
 <pre><code>
 return createElement('h1', this.testData)
 </code></pre>
 
-<blockquote>
 <p>createElement 返回的是什么呢？其实不是一个实际的 DOM 元素。它更准确的名字可能是 createNodeDescription，因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，及其子节点。我们把这样的节点描述为“虚拟节点 (Virtual Node)”，也常简写它为“VNode”。“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。</p>
-</blockquote>
 <h4 id="createElement-参数"><a href="#createElement-参数" class="headerlink" title="createElement 参数"></a>createElement 参数</h4><pre><code>
 // @returns {VNode} 返回的是一个描述对象它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点
 createElement(
@@ -205,9 +193,7 @@ createElement(
 )
 </code></pre>
 
-<h4 id="深入-data-对象"><a href="#深入-data-对象" class="headerlink" title="深入 data 对象"></a>深入 data 对象</h4><blockquote>
-<p>在使用data时要注意：在模板语法中，v-bind:class 和 v-bind:style ，会被特别对待一样，在 VNode 数据对象中，下列属性名是级别最高的字段。该对象也允许你绑定普通的 HTML 特性，就像 DOM 属性一样，比如 innerHTML (这会取代 v-html 指令)。（此处的官方文档写的很全了，就直接拿过来了）</p>
-</blockquote>
+<h4 id="深入-data-对象"><a href="#深入-data-对象" class="headerlink" title="深入 data 对象"></a>深入 data 对象</h4><p>在使用data时要注意：在模板语法中，v-bind:class 和 v-bind:style ，会被特别对待一样，在 VNode 数据对象中，下列属性名是级别最高的字段。该对象也允许你绑定普通的 HTML 特性，就像 DOM 属性一样，比如 innerHTML (这会取代 v-html 指令)。（此处的官方文档写的很全了，就直接拿过来了）</p>
 <pre><code>
 {
   // 和`v-bind:class`一样的 API
