@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="什么是vue的组件（what）? &amp;nbsp;&amp;nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。 一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。 如何使用组件（how）?  前提条件: 使">
+<meta name="description" content="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳 获取时间    let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue的组件的概念与基本使用">
-<meta property="og:url" content="https://itlinnnn.github.io/linhui.github.io/2018/04/Vue的组件的概念与基本使用/index.html">
+<meta property="og:title" content="时间、时间戳、带格式时间的转换">
+<meta property="og:url" content="https://itlinnnn.github.io/linhui.github.io/时间、时间戳、带格式时间的转换/index.html">
 <meta property="og:site_name" content="林晖的个人博客">
-<meta property="og:description" content="什么是vue的组件（what）? &amp;nbsp;&amp;nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。 一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。 如何使用组件（how）?  前提条件: 使">
+<meta property="og:description" content="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳 获取时间    let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-14T16:41:44.000Z">
+<meta property="og:updated_time" content="2018-04-14T16:40:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue的组件的概念与基本使用">
-<meta name="twitter:description" content="什么是vue的组件（what）? &amp;nbsp;&amp;nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。 一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。 如何使用组件（how）?  前提条件: 使">
+<meta name="twitter:title" content="时间、时间戳、带格式时间的转换">
+<meta name="twitter:description" content="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的 时间转换成时间戳 获取时间    let date = new Date(); console.log(date); //输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)    转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://itlinnnn.github.io/linhui.github.io/2018/04/Vue的组件的概念与基本使用/"/>
+  <link rel="canonical" href="https://itlinnnn.github.io/linhui.github.io/时间、时间戳、带格式时间的转换/"/>
 
 
 
 
 
-  <title>Vue的组件的概念与基本使用 | 林晖的个人博客</title>
+  <title>时间、时间戳、带格式时间的转换 | 林晖的个人博客</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://itlinnnn.github.io/linhui.github.io/linhui.github.io/2018/04/Vue的组件的概念与基本使用/">
+    <link itemprop="mainEntityOfPage" href="https://itlinnnn.github.io/linhui.github.io/linhui.github.io/时间、时间戳、带格式时间的转换/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="林晖">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vue的组件的概念与基本使用</h1>
+          <h1 class="post-title" itemprop="name headline">时间、时间戳、带格式时间的转换</h1>
         
 
         <div class="post-meta">
@@ -261,7 +261,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-07T10:41:25+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-07T10:40:16+08:00">
                 2018-04-07
               </time>
             
@@ -299,151 +299,83 @@
       
 
       
-        <h3 id="什么是vue的组件（what）"><a href="#什么是vue的组件（what）" class="headerlink" title="什么是vue的组件（what）?"></a>什么是vue的组件（what）?</h3><hr>
-<p>&nbsp;&nbsp;组件(Component)是vue.js中很强大的一个功能，可以将一些可重用的代码进行封重用。所有的 Vue 组件同时也是 Vue 的实例，可以接受使用相同的选项对象和提供相同的生命周期钩子。<br> 一句话概括：组件就是可以扩展HTML元素，封装可重用的HTML代码，可以将组件看作自定义的HTML元素。</p>
-<h3 id="如何使用组件（how）"><a href="#如何使用组件（how）" class="headerlink" title="如何使用组件（how）?"></a>如何使用组件（how）?</h3><hr>
-<ul>
-<li>前提条件: 使用组件名的时候是需要先实例化Vue的，因为组件现在是扩展在Vue中，想使用Vue中的组件就需要先实例化获得这个组件才能够使用</li>
-</ul>
-<ol>
-<li>创建组件<br>创建组件即在Vue构造函数中通过extend()方法添加该组件（ps：可以理解成在刚开学的时候，老师不认识你，但是知道有泡泡这个人）</li>
-<li>注册组件<br>注册组件即在Vue构造函数中通过一个属性名与之关联在一起，有点像var name=’paopao’;这个时候 temp就是泡泡了（ps：这个时候老师把花名册上的’泡泡’和人对应起来了）<br>组件的注册可分为全局注册与局部注册，区别：注册的地方不一致；全局注册就是只要是实例化Vue的范围都可以使用该组件，局部注册就是只能在某一个Vue实例的范围内使用该组件</li>
+        <h4 id="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的"><a href="#最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的" class="headerlink" title="最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的"></a>最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的</h4><ol>
+<li><p>时间转换成时间戳</p>
+<p>获取时间</p>
+</li>
 </ol>
-<ul>
-<li>全局注册（使用 Vue.component(tagName, options)）</li>
-</ul>
 <pre><code>
-//使用组件
-  < div id="app">
-     < my-component>< /my-component>
-  < /div>
-//确保在初始化根实例之前注册组件
-Vue.component('my-component', {
-  template: '< div> component test! < /div>'
-})
-// 创建根实例
-new Vue({
-  el: '#app',
-  components: { App },
-  template: '< App/>'
-})
-</code></pre>
-
-<p>最终渲染为：</p>
-<pre><code>
-< div id="app">
-  < div>component test!< /div>
-< /div>
+let date = new Date();
+console.log(date);
+//输出：Sat Mar 24 2018 18:22:00 GMT+0800 (CST) (中国标准时间)
 </code></pre>
 
 <ul>
-<li>局部注册</li>
-</ul>
-<p>每个组件都注册到全局的方式显然很不合理，更多的时候采用的往往是局部注册的方式。可以通过某个 Vue 实例/组件的实例选项 components 注册仅在其作用域中可用的组件</p>
-<pre><code>
-var Child = {
-  template: '< div>一个局部注册的组件!< /div>'
-}
-new Vue({
-  components: {
-  // < localRegistration>  只在父组件模板中才可用
-    'localRegistration': Child
-  }
-})
-</code></pre>
-
-<ol start="3">
-<li>使用组件</li>
-</ol>
-<p>这个时候就可以在dom中添加所创建的组件名（这个时候你终于可以以’泡泡’的名义去做点什么事了，比如上课，去图书馆等）</p>
-<h3 id="Dom模版解析事项"><a href="#Dom模版解析事项" class="headerlink" title="Dom模版解析事项"></a>Dom模版解析事项</h3><hr>
-<p>&nbsp;&nbsp; 当使用 DOM 作为模板时 (例如，使用 el 选项来把 Vue 实例挂载到一个已有内容的元素上)，会受到 HTML 本身的一些限制，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。要特别注意的是，像 &lt; ul&gt;、&lt; ol&gt;、&lt; table&gt;、&lt; select&gt; 这样的元素里允许包含的元素有限制，而另一些像 &lt; option&gt; 这样的元素只能出现在某些特定元素的内部。</p>
-<p>例如(&lt; my-row&gt;为自定义的组件)：</p>
-<pre><code>
-< table>
-  < my-row>< /my-row>
-< /table>
-</code></pre>
-
-<p>此时的自定义组件 &lt; my-row&gt; 被当作无效的内容，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。而此时的table标签还没有被解析，所以在往里面放入自定义组件的时候会导致错误的渲染结果。此时的解决方法是可以使用特殊的 is 特性：</p>
-<pre><code>
-< table>
-  < tr is="my-row">
-< /table>
-</code></pre>
-
-<p> !!! 如果使用来自以下来源之一的字符串模板，则没有此限制:</p>
-<ul>
-<li><p>&lt; script type=”text/x-template”&gt;</p>
-</li>
-<li><p>JavaScript 内联模板字符串 (通过内联的方式使其一同进行加载)</p>
-</li>
-<li><p>.vue 组件</p>
-<p>例如：</p>
-</li>
+<li>转换：四种方法（不推荐第一种方法，因为毫秒级别会被转化为000）</li>
 </ul>
 <pre><code>
- new Vue({
-   el: '#app',
-   components:{
-     'selectcomp':{
-       template: ' < select> < optioncomp>< /optioncomp>< /select>'
-      }
-    }
-  })
+let date1 = Date.parse(date);//毫秒级别的数值被转化为000
+console.log(date1);
+//输出:1521886920000
+let date2 = date.valueOf();//通过valueOf()函数返回指定对象的原始值获得准确的时间戳值
+console.log(date2);
+//输出:1521886920000
+let date3 = date.getTime();//通过原型方法直接获得当前时间的毫秒值，准确
+console.log(date3);
+//输出:1521886920000
+let date4 = Number(date);//将时间转化为一个number类型的数值，即时间戳
+console.log(date4);
+//输出:1521886920000
 </code></pre>
 
-<h3 id="Vue-实例时传入的选项中data-必须是函数"><a href="#Vue-实例时传入的选项中data-必须是函数" class="headerlink" title="Vue 实例时传入的选项中data 必须是函数"></a>Vue 实例时传入的选项中data 必须是函数</h3><hr>
-<p>如果这样的写法：</p>
+<p>2.时间转换为带格式的时间<br>格式：yyyy-mm-dd</p>
 <pre><code>
- data: {
-   msg: 'Welcome to Your Vue.js App'
- }
-</code></pre>
-
-<p>将会报错：</p>
-<pre><code>
-//Vue 会停止运行，并在控制台发出警告，告诉你在组件实例中 data 必须是一个函数。
- [HMR] Waiting for update signal from WDS...
-vue.esm.js?efeb:591 [Vue warn]: The "data" option should be a function that 
-returns a per-instance value in component definitions.
-</code></pre>
-
-<p>举个例子来对比一下：</p>
-<pre><code>
-< div id="example">
-  < simple-counter>< /simple-counter>
-  < simple-counter>< /simple-counter>
-  < simple-counter>< /simple-counter>
-
-</code></pre>
-
-<pre><code>
-var data = { counter: 0 }
-Vue.component('simple-counter', {
-  template: '< button v-on:click="counter += 1">{{ counter }}< /button>',
-  // data 的确是一个函数了，因此 Vue 不会警告，
-  // 但是我们却给每个组件实例返回了同一个对象的引用(此处是为了做对比)
-  data: function () {
-    return data
-  }
-})
-
-new Vue({
-  el: '#example'
-})
-</code></pre>
-
-<p> 现在的结果是有三个可以计数的按钮，但是不论点击的是哪一个，所有的按钮的所记数都会加1，因为每个组件实例返回的是同一个对象的引用，不论哪个按钮的对数据进行操作，都会影响到其他的按钮组件计数结果</p>
-<pre><code>
-//将其data的格式写成如下，此时每个 counter 都有自己内部的状态了，都是独立存在的，
-每个组件返回的都是全新的数据对象：
-data: function () {
-  return {
-    counter: 0
-  }
+function formatDate(date) {
+   var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? '0' + m : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    return y + '-' + m + '-' + d;//这里可以写格式
+    //输出：2018-03-24
 }
 </code></pre>
+
+<p>格式：yyyy-mm-dd hh:mm:ss</p>
+<pre><code>
+function formatDateTime(date) {
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? ('0' + m) : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    var h = date.getHours();
+    h=h < 10 ? ('0' + h) : h;
+    var minute = date.getMinutes();
+    minute = minute < 10 ? ('0' + minute) : minute;
+    var second=date.getSeconds();
+    second=second < 10 ? ('0' + second) : second;
+    return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+};
+    //输出：2018-03-24 18:41:16
+</code></pre>
+
+<p>3.时间戳转换为带格式的时间</p>
+<pre><code>
+let date5 = new Date(date);//直接用 new Date(时间戳) 格式转化获得时间
+console.log(date5);
+formatDate(date5);//直接调用上方的方法
+</code></pre>
+
+<p>4.时间格式字符串转为时间戳（毫秒）</p>
+<pre><code>
+let time1='2018-03-24 18:55:16';
+let dateM=new Date(time1.replace(/-/g, '/'));  //开始时间
+let time2=dateM.getTime();
+console.log(time2);
+//输出：1521888916000
+</code></pre>
+
       
     </div>
     
@@ -467,8 +399,8 @@ data: function () {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/linhui.github.io/2018/04/时间、时间戳、带格式时间的转换/" rel="next" title="时间、时间戳、带格式时间的转换">
-                <i class="fa fa-chevron-left"></i> 时间、时间戳、带格式时间的转换
+              <a href="/linhui.github.io/运用node实现简单爬虫/" rel="next" title="运用node实现简单爬虫">
+                <i class="fa fa-chevron-left"></i> 运用node实现简单爬虫
               </a>
             
           </div>
@@ -477,8 +409,8 @@ data: function () {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/linhui.github.io/2018/04/vue组件间的通信/" rel="prev" title="vue组件间的通信">
-                vue组件间的通信 <i class="fa fa-chevron-right"></i>
+              <a href="/linhui.github.io/Vue的组件的概念与基本使用/" rel="prev" title="Vue的组件的概念与基本使用">
+                Vue的组件的概念与基本使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -593,7 +525,7 @@ data: function () {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是vue的组件（what）"><span class="nav-number">1.</span> <span class="nav-text">什么是vue的组件（what）?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用组件（how）"><span class="nav-number">2.</span> <span class="nav-text">如何使用组件（how）?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dom模版解析事项"><span class="nav-number">3.</span> <span class="nav-text">Dom模版解析事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-实例时传入的选项中data-必须是函数"><span class="nav-number">4.</span> <span class="nav-text">Vue 实例时传入的选项中data 必须是函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的"><span class="nav-number">1.</span> <span class="nav-text">最近正好在工作中遇到一些有关处理时间的问题，就整理了一下关于时间转化的问题，很基础，但相信都会接触的到的</span></a></li></ol></div>
             
 
           </div>
