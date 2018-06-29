@@ -1,104 +1,305 @@
 <!DOCTYPE html>
-<html lang="en">
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#34495e">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/linhui.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/linhui.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/linhui.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/linhui.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/linhui.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/linhui.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/linhui.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="什么是内容分发？?概括：将父组件的内容放到子组件指定的位置 场景：在使用组件时，我们常常需要像这样组合使用 &amp;lt; app&amp;gt;   &amp;lt; app-header&amp;gt;&amp;lt; /app-header&amp;gt;   &amp;lt; app-footer&amp;gt;&amp;lt; /app-footer&amp;gt; &amp;lt; /app&amp;gt;   此时有两个点需要注意：  &amp;lt; app&amp;gt; 组件不确定自己所接收的数据。这是由使用 &amp;lt; app&amp;gt; 的父组件所决定的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue的内容分发slot的使用">
+<meta property="og:url" content="https://itlinnnn.github.io/linhui.github.io/Vue的内容分发slot的使用/index.html">
+<meta property="og:site_name" content="林晖的个人博客">
+<meta property="og:description" content="什么是内容分发？?概括：将父组件的内容放到子组件指定的位置 场景：在使用组件时，我们常常需要像这样组合使用 &amp;lt; app&amp;gt;   &amp;lt; app-header&amp;gt;&amp;lt; /app-header&amp;gt;   &amp;lt; app-footer&amp;gt;&amp;lt; /app-footer&amp;gt; &amp;lt; /app&amp;gt;   此时有两个点需要注意：  &amp;lt; app&amp;gt; 组件不确定自己所接收的数据。这是由使用 &amp;lt; app&amp;gt; 的父组件所决定的。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-14T16:44:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue的内容分发slot的使用">
+<meta name="twitter:description" content="什么是内容分发？?概括：将父组件的内容放到子组件指定的位置 场景：在使用组件时，我们常常需要像这样组合使用 &amp;lt; app&amp;gt;   &amp;lt; app-header&amp;gt;&amp;lt; /app-header&amp;gt;   &amp;lt; app-footer&amp;gt;&amp;lt; /app-footer&amp;gt; &amp;lt; /app&amp;gt;   此时有两个点需要注意：  &amp;lt; app&amp;gt; 组件不确定自己所接收的数据。这是由使用 &amp;lt; app&amp;gt; 的父组件所决定的。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/linhui.github.io/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://itlinnnn.github.io/linhui.github.io/Vue的内容分发slot的使用/"/>
+
+
+
+
+
   <title>Vue的内容分发slot的使用 | 林晖的个人博客</title>
-  <link rel="alternate" href="path/of/rss" type="application/atom+xml">
-  <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
-  <link rel="stylesheet" href="/linhui.github.io/css/style.css">
   
 
-  
 
-  
 
-  
+
+
+
+
 
 </head>
 
-<body>
-  <div class="mobile-header">
-    <span><i class="iconfont icon-turnon" id="mobile-nav-toggle"></i></span>
-    <div class="mobile-logo">
-      <a href="/linhui.github.io/.">Ztopic</a>
-    </div>
-  </div>
-  <div class="page" id="mobile-nav-panel">
-    <div class="container">
-      <header class="site-nav">
-      <div class="nav-content">
-        <div class="logo">
-          <a href="/linhui.github.io/">Ztopic</a>
-        </div>
-        <nav class="navbar">
-          <ul>
-            
-              <li class="menu-item">
-                <a href="/linhui.github.io/" class="menu-item-link"><i class="iconfont icon-home"></i>首页</a>
-              </li>
-            
-              <li class="menu-item">
-                <a href="/linhui.github.io/archives" class="menu-item-link"><i class="iconfont icon-archive"></i>归档</a>
-              </li>
-            
-              <li class="menu-item">
-                <a href="/linhui.github.io/about" class="menu-item-link"><i class="iconfont icon-about"></i>关于</a>
-              </li>
-            
-          </ul>
-        </nav>
-      </div>
-</header>
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
-      <div class="banner">
-  <div class="show">
-    <!-- <img src="/linhui.github.io/" alt="banner"> -->
-    <div class="banner-title">
-      
-        <div class="post-title">
-          Vue的内容分发slot的使用
-            <div class="post-tags">
-    		    
-    	      </div>
-        </div>
-      
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/linhui.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">林晖的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
   </div>
 </div>
 
-      <main class="main"id="main">
-          <article class="post">
+<nav class="site-nav">
   
 
-  <header>
-    <div class="post-title mobile-post-title">
-      <h1>Vue的内容分发slot的使用</h1>
-        <div class="post-tags">
-        
-        </div>
-    </div>
-    <div class="post-meta">
-      <span class="post-time"><i class="iconfont icon-calendar"></i>2018-04-14</span>
+  
+    <ul id="menu" class="menu">
       
-      <!----------------------------------->
         
-      <!----------------------------------->
-    </div>
-  </header>
+        <li class="menu-item menu-item-home">
+          <a href="/linhui.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/linhui.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
   
-  <div class="post-toc" id="post-toc">
-    <h2 class="post-toc-title">目录</h2>
-    <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是内容分发？"><span class="toc-text">什么是内容分发？?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#场景：在使用组件时，我们常常需要像这样组合使用"><span class="toc-text">场景：在使用组件时，我们常常需要像这样组合使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#所以为了让组件可以很好的组合使用，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为内容分发，也就是将父组件的内容放到子组件的指定位置。"><span class="toc-text">所以为了让组件可以很好的组合使用，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为内容分发，也就是将父组件的内容放到子组件的指定位置。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单个插槽"><span class="toc-text">单个插槽</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#场景：-当在父组件模版中使用子组件时，父组件的内容将会被丢弃，如下子组件child-component："><span class="toc-text">场景： 当在父组件模版中使用子组件时，父组件的内容将会被丢弃，如下子组件child-component：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具名插槽"><span class="toc-text">具名插槽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域插槽"><span class="toc-text">作用域插槽</span></a></li></ol>
-    </div>
-  </div>
+
+  
+</nav>
 
 
-  <div class="post-content">
-    <h3 id="什么是内容分发？"><a href="#什么是内容分发？" class="headerlink" title="什么是内容分发？?"></a>什么是内容分发？?</h3><p>概括：将父组件的内容放到子组件指定的位置</p>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://itlinnnn.github.io/linhui.github.io/linhui.github.io/Vue的内容分发slot的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林晖">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/linhui.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="林晖的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue的内容分发slot的使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-14T23:48:31+08:00">
+                2018-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是内容分发？"><a href="#什么是内容分发？" class="headerlink" title="什么是内容分发？?"></a>什么是内容分发？?</h3><p>概括：将父组件的内容放到子组件指定的位置</p>
 <h4 id="场景：在使用组件时，我们常常需要像这样组合使用"><a href="#场景：在使用组件时，我们常常需要像这样组合使用" class="headerlink" title="场景：在使用组件时，我们常常需要像这样组合使用"></a>场景：在使用组件时，我们常常需要像这样组合使用</h4><pre><code>
 < app>
   < app-header>< /app-header>
@@ -259,116 +460,359 @@ Vue.component('child-component', {
   < /div>
 < /div>
 </code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/linhui.github.io/vue组件间的通信/" rel="next" title="vue组件间的通信">
+                <i class="fa fa-chevron-left"></i> vue组件间的通信
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/linhui.github.io/Vue-js可复用性/" rel="prev" title="Vue.js可复用性">
+                Vue.js可复用性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
-  <div class="post-footer">the end</div>
-</article>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
 
           
-  <nav class="pagination post-nav">
-    
-      <a href="/linhui.github.io/Vue-js可复用性/">
-        <span class="prev-post"><i class="iconfont icon-back"></i>Vue.js可复用性</span>
-      </a>
-    
-    
-      <a href="/linhui.github.io/vue组件间的通信/">
-        <span class="next-post">vue组件间的通信<i class="iconfont icon-more"></i></span>
-      </a>
-    
-  </nav>
 
-
-          
   
 
 
-      </main>
-    </div>
-    <footer>
-      <div class="social-links">
-        
-          
-            <a href="https://www.zhihu.com/"><i class="iconfont icon-zhihu"></i></a>
-          
-        
-          
-            <a href="https://weibo.com"><i class="iconfont icon-weibo"></i></a>
-          
-        
-          
-            <a href="https://github.com/"><i class="iconfont icon-github"></i></a>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      </div>
-      
-        <div class="quote">
-          <p>Love all, trust a few, do wrong to none.——William Shakespeare</p>
-        </div>
-      
-      <div class="copyright">
-        <p>
-          由 <a href="https://hexo.io/">Hexo</a> 强力驱动
-          <span>|</span>
-          主题 - <a href="https://github.com/wa-ri/hexo-theme-ztopic">ztopic</a
-        </p>
-        <p>
-          <span>
-          
-          &copy;
-          
-            2018
-          
-          </span>
-          <i class="iconfont icon-circle"></i>
-          <span>林晖</span>
-        </p>
-      </div>
-</footer>
 
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
-  <div id="mobile-nav">
-  <nav id="mobile-nav-menu">
+
+  <aside id="sidebar" class="sidebar">
     
-      <a href="/linhui.github.io/" class="mobile-nav-link"><i class="iconfont icon-home"></i>首页</a>
-    
-      <a href="/linhui.github.io/archives" class="mobile-nav-link"><i class="iconfont icon-archive"></i>归档</a>
-    
-      <a href="/linhui.github.io/about" class="mobile-nav-link"><i class="iconfont icon-about"></i>关于</a>
-    
-    <div class="mobile-intro"><i class="iconfont icon-pen"></i>practice makes perfect</div>
-  </nav>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">林晖</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/linhui.github.io/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是内容分发？"><span class="nav-number">1.</span> <span class="nav-text">什么是内容分发？?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#场景：在使用组件时，我们常常需要像这样组合使用"><span class="nav-number">1.1.</span> <span class="nav-text">场景：在使用组件时，我们常常需要像这样组合使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#所以为了让组件可以很好的组合使用，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为内容分发，也就是将父组件的内容放到子组件的指定位置。"><span class="nav-number">1.1.1.</span> <span class="nav-text">所以为了让组件可以很好的组合使用，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为内容分发，也就是将父组件的内容放到子组件的指定位置。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单个插槽"><span class="nav-number">2.</span> <span class="nav-text">单个插槽</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#场景：-当在父组件模版中使用子组件时，父组件的内容将会被丢弃，如下子组件child-component："><span class="nav-number">2.1.</span> <span class="nav-text">场景： 当在父组件模版中使用子组件时，父组件的内容将会被丢弃，如下子组件child-component：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具名插槽"><span class="nav-number">3.</span> <span class="nav-text">具名插槽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域插槽"><span class="nav-number">4.</span> <span class="nav-text">作用域插槽</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林晖</span>
+
+  
 </div>
 
 
-  <script src="/linhui.github.io/libs/jQuery/jquery-3.2.1.min.js"></script>
-  <script src="/linhui.github.io/libs/slideout/slideout.min.js"></script>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
   
-    <link rel="stylesheet" href="/linhui.github.io/libs/fancybox/jquery.fancybox.css">
-    <script src="/linhui.github.io/libs/fancybox/jquery.fancybox.pack.js"></script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/linhui.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/linhui.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/linhui.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/linhui.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/linhui.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/linhui.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/linhui.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/linhui.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
   
   
 
-  <script src="/linhui.github.io/js/ztopic.js"></script>
+  
+  <script type="text/javascript" src="/linhui.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/linhui.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/linhui.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
